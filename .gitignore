@@ -1,6 +1,9 @@
 application/config/database.php
 application/modules/FtpService/config/ftpservice.php
 application/logs/*
+/node_modules/*
+/vendor/*
+/system/*
 
 # exclude everything
 public/uploads/*

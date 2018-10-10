@@ -1,96 +1,27 @@
 @extends('layouts.app')
 @section('content')
-<section id="whatIsPrep">
-    <div class="container">
-        <h1 class="title"></h1>
-        <div class="level">
-            <div class="level-item">
-
+@include('styles.dynamicstyles')
+    @foreach($sections as $section)
+        <section id = {{str_slug($section->title)}} class="hero is-{{$section->size}} is-{{$section->color}} has-text-centered">
+            <div>&nbsp;</div>
+            <div class="container">
+            <h1 class="title">@if($section->has_title =='yes'){{$section->title}}@endif</h1>
+                <div class="columns">
+                @if($section->columns > 1)
+                    @foreach($section->faqs as $faq)
+                        <div class="column has-bg-img-tile" id="column-{{str_slug($section->title)}}">
+                            <h2 class="title">{{$faq->question}}</h2> 
+                        </div> 
+                        <div class="column">
+                            {{$faq->answer}}      
+                        </div>
+                    @endforeach
+                @endif 
+                </div>
+                <div>&nbsp;</div>
             </div>
-            <div class="level-item">
-
-            </div>
-        </div>
-    </div>
-</section>
-<section id="isPrepForEveryone">
-        <div class="container">
-            <h1 class="title"></h1>
-            <div class="level">
-                <div class="level-item">
-
-                </div>
-                <div class="level-item">
-
-                </div>
-            </div>
-        </div>
-</section>
-<section id="isItPreventingHIV">
-        <div class="container">
-            <h1 class="title"></h1>
-            <div class="level">
-                <div class="level-item">
-
-                </div>
-                <div class="level-item">
-
-                </div>
-            </div>
-        </div>
-</section>
-<section id="whenShouldPrepBeInitiated">
-        <div class="container">
-            <h1 class="title"></h1>
-            <div class="level">
-                <div class="level-item">
-
-                </div>
-                <div class="level-item">
-
-                </div>
-            </div>
-        </div>
-</section>
-<section id="prepFacilitiesMap">
-        <div class="container">
-            <div id="facilityLocator">
-
-            </div>
-        </div>
-</section>
-<section id="statusInKenya">
-        <div class="container" >
-            <h1></h1>
-            <div class="level">
-                <div class="level-item" >
-                    <p class="heading"></p>
-                    <p class="title"></p>
-                </div>
-                <div class="level-item">
-                    <p class="heading"></p>
-                    <p class="title"></p>
-                </div>
-                <div class="level-item">
-                    <p class="heading"></p>
-                    <p class="title"></p>
-                </div>
-                <div class="level-item" >
-                    <p class="heading"></p>
-                    <p class="title"></p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="level">
-                <div class="level-item">
-                    <figure class="image is-96x96">
-                        <img src="" alt="">
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endforeach
 @endsection
+
+

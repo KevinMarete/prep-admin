@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2018 at 05:57 PM
+-- Generation Time: Oct 12, 2018 at 08:04 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -258,7 +258,9 @@ CREATE TABLE `menus` (
 
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', '2018-10-08 09:08:10', '2018-10-08 09:08:10'),
-(2, 'main', '2018-10-08 09:13:58', '2018-10-08 09:13:58');
+(2, 'main', '2018-10-08 09:13:58', '2018-10-08 09:13:58'),
+(3, 'resources', '2018-10-12 13:38:33', '2018-10-12 13:38:33'),
+(4, 'users', '2018-10-12 13:49:10', '2018-10-12 13:49:10');
 
 -- --------------------------------------------------------
 
@@ -308,7 +310,13 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (19, 1, 'Homeherotexts', '', '_self', NULL, NULL, NULL, 17, '2018-10-08 10:43:19', '2018-10-08 10:43:19', 'voyager.homeherotexts.index', NULL),
 (20, 1, 'Sections', '', '_self', NULL, NULL, NULL, 18, '2018-10-09 05:31:22', '2018-10-09 05:31:22', 'voyager.sections.index', NULL),
 (21, 1, 'Faqs', '', '_self', NULL, NULL, NULL, 19, '2018-10-09 05:37:07', '2018-10-09 05:37:07', 'voyager.faqs.index', NULL),
-(22, 1, 'Homenumbers', '', '_self', NULL, NULL, NULL, 20, '2018-10-09 06:00:52', '2018-10-09 06:00:52', 'voyager.homenumbers.index', NULL);
+(22, 1, 'Homenumbers', '', '_self', NULL, NULL, NULL, 20, '2018-10-09 06:00:52', '2018-10-09 06:00:52', 'voyager.homenumbers.index', NULL),
+(23, 3, 'Gallery', '', '_self', NULL, '#000000', NULL, 21, '2018-10-12 13:40:12', '2018-10-12 13:40:12', 'resources/gallery', NULL),
+(24, 3, 'Publications', '', '_self', NULL, '#000000', NULL, 22, '2018-10-12 13:40:41', '2018-10-12 13:40:41', 'resources/publications', NULL),
+(25, 3, 'Policies and Guidelines', '', '_self', NULL, '#000000', NULL, 23, '2018-10-12 13:41:10', '2018-10-12 13:42:13', 'resources/guidelines', 'null'),
+(26, 4, 'Users', '/users', '_self', NULL, '#000000', NULL, 24, '2018-10-12 13:49:33', '2018-10-12 13:51:23', NULL, ''),
+(27, 4, 'Providers', '/providers', '_self', NULL, '#000000', NULL, 25, '2018-10-12 13:49:51', '2018-10-12 13:50:58', NULL, ''),
+(28, 4, 'Policy Makers', '/policy-makers', '_self', NULL, '#000000', NULL, 26, '2018-10-12 13:50:13', '2018-10-12 13:51:11', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -875,12 +883,12 @@ ALTER TABLE `homenumbers`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `migrations`
 --

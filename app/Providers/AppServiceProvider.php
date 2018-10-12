@@ -20,9 +20,14 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
 
-        //Get and Share Faqs data with all views
-        $faqs = \App\Faq::all();
-        View::share('faqs', $faqs);
+        //Get Faqs data
+        $data['faqs'] = \App\Faq::all();
+
+        //Get Contact and Address info
+        $data['contacts'] = '';
+
+        //Share data with all views 
+        View::share(compact('data'));
     }
 
     /**

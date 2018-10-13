@@ -24,7 +24,9 @@ class AppServiceProvider extends ServiceProvider
         $data['faqs'] = \App\Faq::all();
 
         //Get Contact and Address info
-        $data['contacts'] = '';
+        $data['contacts'] = \App\Contact::all(['title', 'physical_address', 'postal_address', 'tel', 'email']);
+
+        $data['contact_attribs'] = Schema::getColumnListing('contacts');
 
         //Share data with all views 
         View::share(compact('data'));

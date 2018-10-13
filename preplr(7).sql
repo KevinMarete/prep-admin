@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2018 at 08:04 PM
+-- Generation Time: Oct 13, 2018 at 02:26 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -35,6 +35,30 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `physical_address` text COLLATE utf8mb4_unicode_ci,
+  `tel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `postal_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `physical_address`, `tel`, `email`, `created_at`, `updated_at`, `postal_address`, `title`) VALUES
+(1, 'Afya Annex Kenyatta National Hospital Grounds', '+254-775 597 297', 'info@nascop.or.ke', '2018-10-13 06:12:00', '2018-10-13 08:08:30', 'P.O Box 19361 – 00202,Nairobi, Kenya.', 'PrEP Kenya');
 
 -- --------------------------------------------------------
 
@@ -101,7 +125,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (36, 9, 'question', 'text', 'Question', 0, 1, 1, 1, 1, 1, NULL, 2),
 (37, 9, 'answer', 'text', 'Answer', 0, 1, 1, 1, 1, 1, NULL, 3),
 (38, 9, 'category', 'text', 'Category', 0, 1, 1, 1, 1, 1, NULL, 4),
-(39, 8, 'section_hasone_faq_relationship', 'relationship', 'faqs', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Faq","table":"faqs","type":"hasOne","column":"id","key":"id","label":"question","pivot_table":"categories","pivot":"0","taggable":"0"}', 8),
+(39, 8, 'section_hasone_faq_relationship', 'relationship', 'faqs', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Faq","table":"faqs","type":"hasOne","column":"id","key":"question","label":"question","pivot_table":"categories","pivot":"0","taggable":"0"}', 8),
 (40, 11, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
 (41, 11, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 2),
 (42, 11, 'number', 'text', 'Number', 0, 1, 1, 1, 1, 1, NULL, 3),
@@ -112,7 +136,15 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (47, 8, 'status', 'text', 'Status', 0, 1, 1, 1, 1, 1, NULL, 9),
 (48, 8, 'color', 'text', 'Color', 0, 1, 1, 1, 1, 1, NULL, 10),
 (49, 8, 'has_title', 'text', 'Has Title', 0, 1, 1, 1, 1, 1, NULL, 11),
-(50, 8, 'content', 'text', 'Content', 0, 1, 1, 1, 1, 1, NULL, 12);
+(50, 8, 'content', 'text', 'Content', 0, 1, 1, 1, 1, 1, NULL, 12),
+(51, 13, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(53, 13, 'tel', 'text', 'Tel', 0, 1, 1, 1, 1, 1, NULL, 3),
+(54, 13, 'email', 'text', 'Email', 0, 1, 1, 1, 1, 1, NULL, 4),
+(55, 13, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 5),
+(56, 13, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
+(57, 13, 'physical_address', 'text', 'Physical Address', 0, 1, 1, 1, 1, 1, NULL, 2),
+(58, 13, 'postal_address', 'text', 'Postal Address', 0, 1, 1, 1, 1, 1, NULL, 7),
+(59, 13, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -150,7 +182,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (6, 'homeherotexts', 'homeherotexts', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-08 10:43:19', '2018-10-08 10:43:19'),
 (8, 'sections', 'sections', 'Section', 'Sections', NULL, 'App\\Section', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 05:31:21', '2018-10-09 05:31:21'),
 (9, 'faqs', 'faqs', 'Faq', 'Faqs', NULL, 'App\\Faq', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 05:37:07', '2018-10-09 05:37:07'),
-(11, 'homenumbers', 'homenumbers', 'Homenumber', 'Homenumbers', NULL, 'App\\Homenumber', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 06:00:52', '2018-10-09 06:00:52');
+(11, 'homenumbers', 'homenumbers', 'Homenumber', 'Homenumbers', NULL, 'App\\Homenumber', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
+(13, 'contacts', 'contacts', 'Contact', 'Contacts', NULL, 'App\\Contact', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-13 06:09:10', '2018-10-13 06:09:10');
 
 -- --------------------------------------------------------
 
@@ -316,7 +349,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (25, 3, 'Policies and Guidelines', '', '_self', NULL, '#000000', NULL, 23, '2018-10-12 13:41:10', '2018-10-12 13:42:13', 'resources/guidelines', 'null'),
 (26, 4, 'Users', '/users', '_self', NULL, '#000000', NULL, 24, '2018-10-12 13:49:33', '2018-10-12 13:51:23', NULL, ''),
 (27, 4, 'Providers', '/providers', '_self', NULL, '#000000', NULL, 25, '2018-10-12 13:49:51', '2018-10-12 13:50:58', NULL, ''),
-(28, 4, 'Policy Makers', '/policy-makers', '_self', NULL, '#000000', NULL, 26, '2018-10-12 13:50:13', '2018-10-12 13:51:11', NULL, '');
+(28, 4, 'Policy Makers', '/policy-makers', '_self', NULL, '#000000', NULL, 26, '2018-10-12 13:50:13', '2018-10-12 13:51:11', NULL, ''),
+(29, 1, 'Contacts', '', '_self', NULL, NULL, NULL, 27, '2018-10-13 06:09:11', '2018-10-13 06:09:11', 'voyager.contacts.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -464,7 +498,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (48, 'read_homenumbers', 'homenumbers', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
 (49, 'edit_homenumbers', 'homenumbers', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
 (50, 'add_homenumbers', 'homenumbers', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
-(51, 'delete_homenumbers', 'homenumbers', '2018-10-09 06:00:52', '2018-10-09 06:00:52');
+(51, 'delete_homenumbers', 'homenumbers', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
+(52, 'browse_contacts', 'contacts', '2018-10-13 06:09:10', '2018-10-13 06:09:10'),
+(53, 'read_contacts', 'contacts', '2018-10-13 06:09:10', '2018-10-13 06:09:10'),
+(54, 'edit_contacts', 'contacts', '2018-10-13 06:09:10', '2018-10-13 06:09:10'),
+(55, 'add_contacts', 'contacts', '2018-10-13 06:09:10', '2018-10-13 06:09:10'),
+(56, 'delete_contacts', 'contacts', '2018-10-13 06:09:10', '2018-10-13 06:09:10');
 
 -- --------------------------------------------------------
 
@@ -532,7 +571,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (48, 1),
 (49, 1),
 (50, 1),
-(51, 1);
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1);
 
 -- --------------------------------------------------------
 
@@ -612,7 +656,8 @@ INSERT INTO `sections` (`id`, `title`, `columns`, `hierrarchy`, `faq_id`, `creat
 (4, 'When should Prep be Initiated', 2, 4, 4, '2018-10-09 07:16:00', '2018-10-12 11:51:36', 'medium', 'on', 'dark', 'no', 'double-faq'),
 (5, 'Map Locator', 1, 5, 20, '2018-10-09 07:17:00', '2018-10-10 06:25:51', 'medium', 'on', 'light', 'yes', 'map'),
 (6, 'By The Numbers', 1, 6, 20, '2018-10-09 07:18:00', '2018-10-10 06:25:33', 'medium', 'on', 'dark', 'no', 'numbers'),
-(7, 'Partners', 1, 7, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'light', 'yes', 'partners');
+(7, 'Partners', 1, 7, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'light', 'yes', 'partners'),
+(8, 'Contact Us', 1, 8, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'dark', 'yes', 'contact-form');
 
 -- --------------------------------------------------------
 
@@ -713,6 +758,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_slug_unique` (`slug`),
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `data_rows`
@@ -855,15 +906,20 @@ ALTER TABLE `user_roles`
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `faqs`
 --
@@ -888,7 +944,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -903,7 +959,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `posts`
 --
@@ -918,7 +974,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `settings`
 --

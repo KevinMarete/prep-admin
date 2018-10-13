@@ -6,7 +6,7 @@
       background-color: #0000; 
       background-position: center; 
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: 500px;
     }
   </style>
   @endforeach

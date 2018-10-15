@@ -1,3 +1,4 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEUjRuSW4K7TbLLlSLZ2uNqr7UdIxw364&callback=initMap" async defer></script>
 <footer class="footer">
   <div class="container">
     <div class="columns">

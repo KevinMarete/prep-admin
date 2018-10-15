@@ -12,7 +12,11 @@
 */
 
 Route::get('/', 'PrepFront@index');
-
+Route::get('/user', 'PrepFront@user');
+Route::get('/provider', 'PrepFront@provider');
+Route::get('/policymaker', 'PrepFront@policymaker');
+Route::get('/resources', 'PrepFront@resources');
+Route::get('/journeyinkenya', 'PrepFront@journeyinkenya');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

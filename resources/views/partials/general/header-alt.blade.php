@@ -4,11 +4,9 @@
 <!--Scripts-->
 <script src = "./js/bundle.js"></script>
 
-<!--Styles-->
-@include('styles.page-hero-styles')
 
 <!-- Nav -->
-<section class = "hero is-primary is-{{$herotext->hero_size}}" id="has_bg_img_{{$herotext->page}}" >
+<section class = "hero is-primary is-medium has_bg_img">
     <div class = "hero-head">
         <nav class="navbar is-transparent">
             <div class = "container">
@@ -32,8 +30,8 @@
     </div>
     <div class ="hero-body">
         <div class = "container has-text-left">
-          <h1 class="title is-size-1">{{$herotext->title}}</h1>
-          <h2 class="subtitle">{{$herotext->subtitle}}</h2>
+          <h1 class="title is-size-1">{{$pageshero->title}}</h1>
+          <h2 class="subtitle">{{$pageshero->subtitle}}</h2>
         </div>
     </div>
 </section>

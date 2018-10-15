@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 13, 2018 at 02:26 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Host: localhost:3306
+-- Generation Time: Oct 15, 2018 at 12:07 PM
+-- Server version: 5.7.19
+-- PHP Version: 7.1.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -95,8 +97,8 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '', 6),
 (7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 7),
 (8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '', 8),
-(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":"0"}', 10),
-(10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1","taggable":"0"}', 11),
+(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\"}', 10),
+(10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"user_roles\",\"pivot\":\"1\",\"taggable\":\"0\"}', 11),
 (11, 1, 'locale', 'text', 'Locale', 0, 1, 1, 1, 1, 0, '', 12),
 (12, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '', 12),
 (13, 2, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1),
@@ -125,7 +127,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (36, 9, 'question', 'text', 'Question', 0, 1, 1, 1, 1, 1, NULL, 2),
 (37, 9, 'answer', 'text', 'Answer', 0, 1, 1, 1, 1, 1, NULL, 3),
 (38, 9, 'category', 'text', 'Category', 0, 1, 1, 1, 1, 1, NULL, 4),
-(39, 8, 'section_hasone_faq_relationship', 'relationship', 'faqs', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Faq","table":"faqs","type":"hasOne","column":"id","key":"question","label":"question","pivot_table":"categories","pivot":"0","taggable":"0"}', 8),
+(39, 8, 'section_hasone_faq_relationship', 'relationship', 'faqs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Faq\",\"table\":\"faqs\",\"type\":\"hasOne\",\"column\":\"id\",\"key\":\"question\",\"label\":\"question\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
 (40, 11, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
 (41, 11, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 2),
 (42, 11, 'number', 'text', 'Number', 0, 1, 1, 1, 1, 1, NULL, 3),
@@ -144,7 +146,9 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (56, 13, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
 (57, 13, 'physical_address', 'text', 'Physical Address', 0, 1, 1, 1, 1, 1, NULL, 2),
 (58, 13, 'postal_address', 'text', 'Postal Address', 0, 1, 1, 1, 1, 1, NULL, 7),
-(59, 13, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 8);
+(59, 13, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 8),
+(60, 6, 'page', 'text', 'Page', 0, 1, 1, 1, 1, 1, NULL, 6),
+(61, 6, 'hero_size', 'text', 'Hero Size', 0, 1, 1, 1, 1, 1, NULL, 7);
 
 -- --------------------------------------------------------
 
@@ -178,12 +182,12 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', '', '', 1, 0, NULL, '2018-10-08 09:08:08', '2018-10-08 09:08:08'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2018-10-08 09:08:08', '2018-10-08 09:08:08'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, '', '', 1, 0, NULL, '2018-10-08 09:08:08', '2018-10-08 09:08:08'),
-(5, 'homeherotext', 'homeherotext', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-08 10:33:09', '2018-10-08 10:33:09'),
-(6, 'homeherotexts', 'homeherotexts', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-08 10:43:19', '2018-10-08 10:43:19'),
-(8, 'sections', 'sections', 'Section', 'Sections', NULL, 'App\\Section', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 05:31:21', '2018-10-09 05:31:21'),
-(9, 'faqs', 'faqs', 'Faq', 'Faqs', NULL, 'App\\Faq', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 05:37:07', '2018-10-09 05:37:07'),
-(11, 'homenumbers', 'homenumbers', 'Homenumber', 'Homenumbers', NULL, 'App\\Homenumber', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
-(13, 'contacts', 'contacts', 'Contact', 'Contacts', NULL, 'App\\Contact', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-13 06:09:10', '2018-10-13 06:09:10');
+(5, 'homeherotext', 'homeherotext', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-08 10:33:09', '2018-10-08 10:33:09'),
+(6, 'homeherotexts', 'homeherotexts', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-08 10:43:19', '2018-10-08 10:43:19'),
+(8, 'sections', 'sections', 'Section', 'Sections', NULL, 'App\\Section', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-09 05:31:21', '2018-10-09 05:31:21'),
+(9, 'faqs', 'faqs', 'Faq', 'Faqs', NULL, 'App\\Faq', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-09 05:37:07', '2018-10-09 05:37:07'),
+(11, 'homenumbers', 'homenumbers', 'Homenumber', 'Homenumbers', NULL, 'App\\Homenumber', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
+(13, 'contacts', 'contacts', 'Contact', 'Contacts', NULL, 'App\\Contact', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-13 06:09:10', '2018-10-13 06:09:10');
 
 -- --------------------------------------------------------
 
@@ -238,15 +242,22 @@ CREATE TABLE `homeherotexts` (
   `title` text COLLATE utf8mb4_unicode_ci,
   `subtitle` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `page` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hero_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `homeherotexts`
 --
 
-INSERT INTO `homeherotexts` (`id`, `title`, `subtitle`, `created_at`, `updated_at`) VALUES
-(1, 'Love.Prevent.Live', 'Protect yourself from HIV.', '2018-10-08 10:44:11', '2018-10-08 10:44:11');
+INSERT INTO `homeherotexts` (`id`, `title`, `subtitle`, `created_at`, `updated_at`, `page`, `hero_size`) VALUES
+(1, 'Love.Prevent.Live', 'Protect yourself from HIV.', '2018-10-08 10:44:00', '2018-10-15 08:54:15', 'home', 'large'),
+(2, 'User', NULL, '2018-10-15 08:54:56', '2018-10-15 08:54:56', 'user', 'medium'),
+(3, 'Provider', NULL, '2018-10-15 08:55:19', '2018-10-15 08:55:19', 'provider', 'medium'),
+(4, 'Policy Maker', NULL, '2018-10-15 08:55:39', '2018-10-15 08:55:39', 'policymaker', 'medium'),
+(5, 'Journey in Kenya', NULL, '2018-10-15 08:57:01', '2018-10-15 08:57:01', 'journeyinkenya', 'medium'),
+(6, 'Resources', NULL, '2018-10-15 08:57:40', '2018-10-15 08:57:40', 'resources', 'medium');
 
 -- --------------------------------------------------------
 
@@ -654,7 +665,7 @@ INSERT INTO `sections` (`id`, `title`, `columns`, `hierrarchy`, `faq_id`, `creat
 (2, 'What Is Prep and Is it for everyone', 2, 2, 2, '2018-10-09 07:15:00', '2018-10-10 06:26:49', 'medium', 'on', 'primary', 'no', 'faq-left'),
 (3, 'Prep Prevents HIV', 2, 3, 3, '2018-10-09 07:15:00', '2018-10-10 06:19:49', 'medium', 'on', 'link', 'no', 'double-faq'),
 (4, 'When should Prep be Initiated', 2, 4, 4, '2018-10-09 07:16:00', '2018-10-12 11:51:36', 'medium', 'on', 'dark', 'no', 'double-faq'),
-(5, 'Map Locator', 1, 5, 20, '2018-10-09 07:17:00', '2018-10-10 06:25:51', 'medium', 'on', 'light', 'yes', 'map'),
+(5, 'Facility Locator', 1, 5, 20, '2018-10-09 07:17:00', '2018-10-10 06:25:51', 'medium', 'on', 'light', 'yes', 'map'),
 (6, 'By The Numbers', 1, 6, 20, '2018-10-09 07:18:00', '2018-10-10 06:25:33', 'medium', 'on', 'dark', 'no', 'numbers'),
 (7, 'Partners', 1, 7, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'light', 'yes', 'partners'),
 (8, 'Contact Us', 1, 8, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'dark', 'yes', 'contact-form');
@@ -905,91 +916,109 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `faqs`
 --
 ALTER TABLE `faqs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `homeherotexts`
 --
 ALTER TABLE `homeherotexts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `homenumbers`
 --
 ALTER TABLE `homenumbers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Constraints for dumped tables
 --
@@ -1031,6 +1060,7 @@ ALTER TABLE `users`
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

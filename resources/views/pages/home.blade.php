@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@include('styles.dynamicstyles')
+@include('styles.section-styles')
     @foreach($sections as $section)
         <section id = {{str_slug($section->title)}} class="hero is-{{$section->size}} is-{{$section->color}} has-text-centered">
             <div>&nbsp;</div>

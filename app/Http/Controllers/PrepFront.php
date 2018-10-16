@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Homeherotext;
 use App\Homenumber;
 use App\Section;
+use App\Partner;
 
 
 class PrepFront extends Controller
@@ -19,6 +20,7 @@ class PrepFront extends Controller
         $data['herotext'] = Homeherotext::first();
         $data['sections'] = Section::all();
         $data['homenumbers'] = Homenumber::all();
+        $data['partners'] = Partner::all();
 
         //Pass data to home page
         return view('pages.home', $data);

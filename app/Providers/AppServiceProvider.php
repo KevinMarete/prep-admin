@@ -28,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
             $page = 'home';
         }
 
+        //Get misc data
+        $data['misc'] = \App\Misc::all();
+
         //Get page uri segment name
         $data['page'] = $page;
              

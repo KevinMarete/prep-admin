@@ -1,9 +1,9 @@
+
 <style>
-     #has-bg-img-{{str_slug($section->content)}} {
-      background-image: url("storage/sections/{{str_slug($section->content)}}.jpeg"); 
-      background-color: #0000; 
-      background-position: center; 
-      background-repeat: no-repeat;
-      background-size: 500px;
-    }
-  </style>
+         .with-bg {
+            background-color:rgba(0, 0, 0, 0.7);
+            width:100%;
+            height:100%;
+          }
+
+</style>

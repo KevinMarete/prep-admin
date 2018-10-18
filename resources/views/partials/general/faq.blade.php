@@ -1,6 +1,6 @@
 &nbsp;
 <div class="container">
-   @php $i=0 @endphp
+   @php $i=0;@endphp
     <div class="columns">
     @foreach($data['faqs_'.$data['page']] as $faq)
         <div class="column is-one-third">
@@ -8,8 +8,8 @@
                     <div class="media-content">
                         <p><strong>{{$faq->question}}</strong></p>
                         &nbsp;
-                        <figure class="image is-square">
-                            <img src="{{url('storage/faqs/').str_slug($faq->question)}}" alt="">
+                        <figure class="image is-4by3">
+                            <img src="{{url('storage/'.array_random($data['images']))}}" alt="">
                         </figure>
                         &nbsp;
                         <p>{{$faq->answer}}</p>

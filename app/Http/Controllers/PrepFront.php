@@ -18,7 +18,7 @@ class PrepFront extends Controller
 
         //Get home page data
         $data['herotext'] = Homeherotext::first();
-        $data['sections'] = Section::all();
+        $data['sections'] = Section::all()->sortBy('hierrarchy');
         $data['homenumbers'] = Homenumber::all();
         $data['partners'] = Partner::all();
 

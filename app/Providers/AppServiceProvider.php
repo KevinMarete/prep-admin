@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use \Illuminate\Support\Facades\Request;
+use \Illuminate\Support\Facades\Storage;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -28,8 +29,22 @@ class AppServiceProvider extends ServiceProvider
             $page = 'home';
         }
 
+        //Get RAST
+        $data['rast'] = \App\Riskassessment::all();
+        $sections = \App\Section::all();
+        //Get section images
+        foreach($sections as $section){
+            $data['section_imgs_'.str_slug($section->title)] = Storage::allFiles('sections/'.$section->title);
+        }
+        
+        //Get hero images
+        $data['hero_imgs'] = Storage::files('pages/'.$page);
+
+        //Get images depending on the page
+        $data['images'] = Storage::files('faqs/'.$page);
+
         //Get misc data
-        $data['misc'] = \App\Misc::all();
+        $data['misc'] = \App\Misc::all()->where('page', $page);
 
         //Get page uri segment name
         $data['page'] = $page;

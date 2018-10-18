@@ -14,6 +14,9 @@
                     <a class="navbar-item" href="/" >
                         <img src="./images/prep-logo-cropped.png" alt="Prep (Kenya)">
                     </a>
+                    <a class="navbar-item" href="/" >
+                        <img src="./images/prep-logo-cropped.png" alt="Prep (Kenya)">
+                    </a>
                     <div class="navbar-burger burger" data-target="prepNav">
                         <span></span>
                         <span></span>

@@ -51,6 +51,10 @@ class PrepFront extends Controller
             return view('pages.journeyinkenya');
         }
 
+                //Return Journey in Kenya
+                public function rast(){
+                    return view('pages.riskassessment');
+                }
 
 
 }

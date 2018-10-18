@@ -44,7 +44,7 @@
         $('html').toggleClass('is-clipped');
     }
     //Open and close modal
-    $('.modal').click(toggleModalClasses);
+    $('#pop-rast').click(toggleModalClasses);
     $('.modal-close').click(toggleModalClasses);
 
 </script>

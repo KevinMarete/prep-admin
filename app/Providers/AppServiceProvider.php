@@ -36,6 +36,15 @@ class AppServiceProvider extends ServiceProvider
         foreach($sections as $section){
             $data['section_imgs_'.str_slug($section->title)] = Storage::allFiles('sections/'.$section->title);
         }
+
+        //Get resources
+        $data['resources_folders'] = Storage::directories('resources');
+
+        //Get resource files
+        foreach($data['resources_folders'] as $folder){
+            $resource = explode('/', $folder);
+            $data['resource_files_'.$resource[1]] = Storage::allFiles('resources/'.$resource[1]);
+        }
         
         //Get hero images
         $data['hero_imgs'] = Storage::files('pages/'.$page);

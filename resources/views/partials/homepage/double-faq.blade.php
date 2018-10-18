@@ -11,7 +11,7 @@
               <p class>{{$faq->answer}}</p>
               @if($faq->question == 'Is PrEP for Everyone')
                 &nbsp;
-                <p><b>Is PrEP for you? <a class="button" href="#rat">Find out</a></b></p>
+                <p><b>Is PrEP for you? <a class="button" id="pop-rast" href="#rat">Find out</a></b></p>
               @endif
           </div>
           @php $df++; @endphp

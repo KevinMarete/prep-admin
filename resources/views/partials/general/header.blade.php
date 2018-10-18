@@ -4,6 +4,7 @@
 <!--Scripts-->
 <script src = "./js/bundle.js"></script>
 
+
 @foreach($data['homeherotext'] as $hero)
 <!-- Nav -->
 <section class = "hero is-primary is-{{$hero->hero_size}}" id="has_bg_img_{{$hero->page}}" >
@@ -12,10 +13,9 @@
             <div class = "container">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="/" >
-                        <img src="./images/prep-logo-cropped.png" alt="Prep (Kenya)">
-                    </a>
-                    <a class="navbar-item" href="/" >
-                        <img src="./images/prep-logo-cropped.png" alt="Prep (Kenya)">
+                        <figure class = "image">
+                            <img src="{{url('/storage/logos/yVL7KMxlAKmFnlPGcEJkxpMsortoAdZ5pq8QuBrv.png')}}" alt="Prep (Kenya)">
+                        </figure>
                     </a>
                     <div class="navbar-burger burger" data-target="prepNav">
                         <span></span>
@@ -35,6 +35,11 @@
         <div class = "container has-text-left">
           <h1 class="title is-size-1">{{$hero->title}}</h1>
           <h2 class="subtitle">{{$hero->subtitle}}</h2>
+          @if($data['page'] == 'home' || $data['page'] == ' ')
+          <!--figure class = "image is-64x64">
+                <img src="{{url('/images/prep-logo-cropped.png')}}"  alt="Prep (Kenya)">
+            </figure-->
+          @endif
         </div>
     </div>
 </section>

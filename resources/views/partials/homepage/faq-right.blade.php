@@ -1,4 +1,4 @@
- <div class="columns is-gapless is-flex ">
+ <div class="columns is-gapless is-flex" style="display:table">
     @if($section->columns > 1)
     @php $fr=0; @endphp
         @foreach($section->faqs as $faq)

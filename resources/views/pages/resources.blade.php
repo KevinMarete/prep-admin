@@ -2,18 +2,19 @@
 @section('content')
 <div class = "container">
     <div class = "tabs is-centered">
-        <ul>
+        <ul class = "nav nav-tabs" id="nav-tab"> 
         @foreach($data['resources_folders'] as $resource)
             @php $titles = explode('/', $resource) @endphp
-            <li class="tab" >
-                <a href="#{{str_slug($titles[1])}}">{{$titles[1]}}</a>
+            <li class="nav-item" >
+                <a id="{{$titles[1]}}_tab" data-toggle="tab" class="nav-link" href="#{{str_slug($titles[1])}}_tabContent">{{$titles[1]}}</a>
             </li>
         @endforeach
         </ul>
     </div>
+    <div class = "tab-content" id="nav-tabContent">
     @foreach($data['resources_folders'] as $resource)
     @php $titles = explode('/', $resource) @endphp
-    <div id = "{{$titles[1]}}_tabContent" class="columns content-tab">
+    <div id = "{{str_slug($titles[1])}}_tabContent" class="columns tab-pane fade">
     @foreach($data['resource_files_'.$titles[1]] as $file)
     @php $filenames = explode('/', $file) @endphp
         <div class="column is-one-third">
@@ -42,7 +43,9 @@
     </div>
     @endforeach
 </div>
+</div>
 @endsection
 
 <script>
+    $('#myTab a[href="#profile"]').tab('show')
 </script>

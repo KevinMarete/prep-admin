@@ -26,12 +26,12 @@
             @endif
             @endforeach
     </div>
-    </section>
-    <footer class = "modal-card-footer">
+    <div class = "modal-footer">
         @foreach($data['misc'] as $misc)
-            <div class = "blockquote">{{$misc->content}}</div>
+            <div class = "box">If you answer YES to any of the screening questions and if your sexual partner is HIV positive. Kindly obtain more information about PrEP <a href="/user">here</a> and visit your nearest Health facility <a href="/#map">here</a> for a further PrEP assessment.</div>
         @endforeach
-    </footer>
+    </div>
+    </section>
     <button class = "modal-close is-large" aria-label="close" ></button>
 </div>
 </div>

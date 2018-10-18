@@ -1,27 +1,23 @@
 <div class = "container">
   <div class="field">
-    <label class="label">Email</label>
+    <label class="label has-text-justified">Email</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+      <input class="input" type="email" placeholder="Email input" value="">
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
-      <span class="icon is-small is-right">
-        <i class="fas fa-exclamation-triangle"></i>
-      </span>
     </div>
-    <p class="help is-danger">This email is invalid</p>
   </div>
 
   <div class="field">
-    <label class="label">Subject</label>
+    <label class="label has-text-justified ">Subject</label>
     <div class="control">
-      <input type="text">
+      <input class="input" type="text">
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Message</label>
+    <label class="label has-text-justified ">Message</label>
     <div class="control">
       <textarea class="textarea" placeholder="Textarea"></textarea>
     </div>

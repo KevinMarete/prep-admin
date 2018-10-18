@@ -1,4 +1,4 @@
- <div class="columns is-gapless is-flex" style="display:table">
+ <div class="columns is-gapless is-flex">
     @if($section->columns > 1)
     @php $fr=0; @endphp
         @foreach($section->faqs as $faq)
@@ -10,8 +10,13 @@
               @endforeach
               </figure>
             </div>
-            <div class="column with-bg">
-                {{$faq->answer}}
+            <div class="column with-bg has-text-centered" style="vertical-align:top !important"  >
+               <div class="content">
+               <p>&nbsp;</p>
+               <p>&nbsp;</p>
+               <p>&nbsp;</p>
+               <p>&nbsp;</p>
+               <p class="inc-padding subtitle">{{$faq->answer}}</p></div> 
             </div>
             @php $fr++; @endphp
         @endforeach

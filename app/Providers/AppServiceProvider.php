@@ -40,6 +40,15 @@ class AppServiceProvider extends ServiceProvider
         //Get resources
         $data['resources_folders'] = Storage::directories('resources');
 
+        //Get gallery
+        $data['galleries'] = Storage::directories('galleries');
+        
+        //Get gallery pictures
+        foreach($data['galleries'] as $gallery){
+            $g = explode('/', $gallery);
+            $data['galleries_'.$g[1]] = Storage::allFiles('galleries/'.$g[1]);
+        }
+
         //Get resource files
         foreach($data['resources_folders'] as $folder){
             $resource = explode('/', $folder);

@@ -17,9 +17,7 @@
             <div class = "container">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="/" >
-                        <figure class = "image">
-                            <img src="{{url('/storage/logos/yVL7KMxlAKmFnlPGcEJkxpMsortoAdZ5pq8QuBrv.png')}}" alt="Prep (Kenya)">
-                        </figure>
+                        <img src="{{url('/storage/logos/yVL7KMxlAKmFnlPGcEJkxpMsortoAdZ5pq8QuBrv.png')}}" alt="Prep (Kenya)">
                     </a>
                     <div class="navbar-burger burger" data-target="prepNav">
                         <span></span>

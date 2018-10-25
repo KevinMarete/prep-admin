@@ -2,7 +2,7 @@
   @foreach($section->faqs as $faq)
   <style>
      #column-{{str_slug($faq->question)}} {
-      background-image: url("storage/faqs/{{str_slug($faq->question)}}.jpeg"); 
+      background-image: url("storage/faqs/{{str_slug($faq->question)}}.jpg"); 
       background-color: #0000; 
       background-position: center; 
       background-repeat: no-repeat;

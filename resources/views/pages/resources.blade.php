@@ -42,7 +42,7 @@
                 <div class="field">
                     <div class="control">
                         &nbsp;
-                        <a class = "button" href="{{url('storage/').'/'.$file}}">Download</a>
+                        <a target="_blank" class = "button" href="{{url('storage/').'/'.$file}}">Download</a>
                         &nbsp;
                     </div>
                 </div>

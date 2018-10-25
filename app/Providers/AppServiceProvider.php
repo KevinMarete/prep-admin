@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use \Illuminate\Support\Facades\Request;
 use \Illuminate\Support\Facades\Storage;
-
+use ImageOptimizer;
 
 class AppServiceProvider extends ServiceProvider
 {

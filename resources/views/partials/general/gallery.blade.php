@@ -30,6 +30,7 @@
                             </button>
                         </div>
                         <div class = "modal-body">
+                        @if(!empty($data['galleries_'.$gname]))
                             <div id = "carousel{{str_slug($gname)}}" class="carousel slide" data-ride="carousel">
                                 <ol class = "carousel-indicators">
                                     @foreach($data['galleries_'.$gname] as $photo)
@@ -38,12 +39,23 @@
                                 </ol>
                                 <div class = "carousel-inner">
                                     @foreach($data['galleries_'.$gname] as $photo)
-                                        <div class = "carousel-item">
-                                            <img src="" alt="">
+                                        <div class = "carousel-item @if($loop->first) {{'active'}} @endif">
+                                            <img class="d-block w-100" src="{{url('storage/').'/'.$data['galleries_'.$gname][$loop->index]}}" alt="{{$gname.'-'.$loop->index}}">
                                         </div>
                                     @endforeach
+                                    <a class="carousel-control-prev" href="#carousel{{str_slug($gname)}}" role="button" data-slide="prev" >
+                                        <span class ="carousel-control-prev-icon" aria-hidden ="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carousel{{str_slug($gname)}}" role="button" data-slide="prev" >
+                                        <span class ="carousel-control-next-icon" aria-hidden ="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
                                 </div>
                             </div>
+                            @else
+                                @include('partials.general.no-content')
+                            @endif
                         </div>
                     </div>
                 </div>

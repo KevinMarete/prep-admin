@@ -19,6 +19,8 @@ Route::get('/resources', 'PrepFront@resources');
 Route::get('/journeyinkenya', 'PrepFront@journeyinkenya');
 Route::get('/riskassessment-tool', 'PrepFront@rast');
 
+Route::post('/sendMail', 'PrepFront@sendMail')->name('email');
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

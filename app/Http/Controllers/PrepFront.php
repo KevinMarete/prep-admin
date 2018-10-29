@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 //Model namespaces
 use App\Homeherotext;
 use App\Homenumber;
 use App\Section;
 use App\Partner;
+use App\Contact;
+
+//Use Mail
+use App\Mail\ContactUs;
 
 
 class PrepFront extends Controller
@@ -51,10 +56,24 @@ class PrepFront extends Controller
             return view('pages.journeyinkenya');
         }
 
-                //Return Journey in Kenya
-                public function rast(){
-                    return view('pages.riskassessment');
-                }
+        //Return Journey in Kenya
+        public function rast(){
+            return view('pages.riskassessment');
+        }
+
+        //Mail
+        public function sendMail(Request $request){
+         
+            //Get user details
+           $mail_params = $request->input('all');
+           $contact_email = Contact::all('email')->first();
+
+           //Send Mail
+           Mail::to($contact_email)->send(new ContactUs($mail_params));
+
+
+           
+        }
 
 
 }

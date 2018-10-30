@@ -61,7 +61,7 @@ return [
     ],
 
 
-    'reply_to' => ['address' => 'ulizanascop@gmail.com', 'name' => 'PrEP Kenya'],
+    //'reply_to' => ['address' => 'ulizanascop@gmail.com', 'name' => 'PrEP Kenya'],
 
     /*
     |--------------------------------------------------------------------------

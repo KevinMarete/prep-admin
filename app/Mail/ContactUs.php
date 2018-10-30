@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mail;
-
+use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -17,12 +17,16 @@ class ContactUs extends Mailable
      * @return void
      */
 
-    protected $mail_params;
+    public $request;
 
 
-    public function __construct()
+    public function __construct(Request $request)
     {
         //
+
+        $this->request = $request;
+
+
     }
 
     /**
@@ -32,7 +36,10 @@ class ContactUs extends Mailable
      */
     public function build()
     {
-        return $this->from($mail_params->email)
-        ->markdown('emails.contactus');
+        return $this->from($this->request->input('email'))
+        ->subject('Contact Us -'. $this->request->input('subject'))
+        ->replyTo($this->request->input('email'))
+        ->markdown('emails.contactus')
+        ->with(['em' => $this->request]);
     }
 }

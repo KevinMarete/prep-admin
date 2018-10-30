@@ -64,14 +64,14 @@ class PrepFront extends Controller
         //Mail
         public function sendMail(Request $request){
          
-            //Get user details
-           $mail_params = $request->input('all');
+            //Get contact email
            $contact_email = Contact::all('email')->first();
 
            //Send Mail
-           Mail::to($contact_email)->send(new ContactUs($mail_params));
+           Mail::to($contact_email)->send(new ContactUs($request));
 
-
+           //Redirect
+           return redirect('/#contact-form')->with('status', 'Email sent!');
            
         }
 

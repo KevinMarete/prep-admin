@@ -1,4 +1,9 @@
 <div class = "container">
+  @if (session('status'))
+      <div class="alert alert-success">
+          {{ session('status') }}
+      </div>
+  @endif
   {!! Form::open(['route' => 'email']) !!}
     <div class="field">
       <label class="label has-text-justified">Email</label>

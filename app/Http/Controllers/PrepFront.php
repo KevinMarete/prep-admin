@@ -11,6 +11,7 @@ use App\Homenumber;
 use App\Section;
 use App\Partner;
 use App\Contact;
+use App\Map;
 
 //Use Mail
 use App\Mail\ContactUs;
@@ -26,6 +27,11 @@ class PrepFront extends Controller
         $data['sections'] = Section::all()->sortBy('hierrarchy');
         $data['homenumbers'] = Homenumber::all();
         $data['partners'] = Partner::all();
+
+        //Get map data
+        $map_data = array('main' => array(), 'drilldown' => array(), 'columns' => array());
+        $map_data = Map::get_facility_distribution_map();
+        $data['chart_series_data'] = json_encode($map_data['main'], JSON_NUMERIC_CHECK);
 
         //Pass data to home page
         return view('pages.home', $data);

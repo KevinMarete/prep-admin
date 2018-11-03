@@ -19,7 +19,7 @@
                     <a class="navbar-item" href="/" >
                         <img src="{{url('/storage/logos/yVL7KMxlAKmFnlPGcEJkxpMsortoAdZ5pq8QuBrv.png')}}" alt="Prep (Kenya)">
                     </a>
-                    <div class="navbar-burger burger" data-target="prepNav">
+                    <div id="nav-toggle"class="navbar-burger burger" data-target="prepNav">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -47,3 +47,5 @@
 </section>
 @include('styles.page-hero-styles')
 @endforeach
+<!--Hamburger Menu Js for Bulma CSS-->
+<script src = "{{url('js/hamburger-menu.js')}}"></script>

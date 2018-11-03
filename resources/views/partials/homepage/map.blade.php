@@ -27,7 +27,9 @@
     <script>
         var api_data;
 		var mapDIV = 'locator';
-               $.get("json/kenya.json", function(datam, status){
+		var chart_data = <?php echo $chart_series_data; ?>;
+
+            $.get("json/kenya.json", function(datam, status){
         	var api_data=datam.data;
 
 		    var data = Highcharts.geojson(api_data),
@@ -56,7 +58,7 @@
 		                    if (!e.seriesOptions) {
 		                        var county_name = e.point.name.replace(" ", "_").replace("'", "").replace("-", "_").toLowerCase();
 		                        chart = this,
-		                            mapKey = 'public/dashboard/json/counties/' + county_name + '.json' ,
+		                            mapKey = 'json/counties/' + county_name + '.json' ,
 		                            // Handle error, the timeout is cleared on success
 		                            fail = setTimeout(function () {
 		                                if (mapKey) {
@@ -70,7 +72,7 @@
 		                        // Show the spinner
 		                        chart.showLoading('<i class="icon-spinner icon-spin icon-3x"></i>'); // Font Awesome spinner
 
-		                        $.get('public/dashboard/json/counties/' + county_name + '.json', function(datam, status){
+		                        $.get('json/counties/' + county_name + '.json', function(datam, status){
 		                            data = Highcharts.geojson(datam.data);
 		                            //Get facility count
 		                            $.each(data, function (i, v) {
@@ -145,11 +147,11 @@
 		        },
 
 		        title: {
-		            text: 'Title'
+		            text: ' '
 		        },
 
 		        subtitle: {
-		            text: 'Source'
+		            text: 'Source:www.prep.nascop.org'
 		        },
 
 		        legend: small ? {} : {

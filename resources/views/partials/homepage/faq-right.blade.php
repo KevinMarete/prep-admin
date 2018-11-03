@@ -11,12 +11,9 @@
               </figure>
             </div>
             <div class="column with-bg has-text-centered" style="vertical-align:top !important"  >
-               <div class="content">
-               <p>&nbsp;</p>
-               <p>&nbsp;</p>
-               <p>&nbsp;</p>
-               <p>&nbsp;</p>
-               <p class="inc-padding subtitle">{{$faq->answer}}</p></div> 
+               <div class="content center-block" style="display: flex; justify-content: center; align-items: center; height: 100%">
+               <p class="px-3 subtitle">{{$faq->answer}}</p>
+               </div> 
             </div>
             @php $fr++; @endphp
         @endforeach

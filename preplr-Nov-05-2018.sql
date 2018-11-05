@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 16, 2018 at 04:30 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Host: localhost:3306
+-- Generation Time: Nov 05, 2018 at 09:04 AM
+-- Server version: 5.7.19
+-- PHP Version: 7.1.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -58,7 +60,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `physical_address`, `tel`, `email`, `created_at`, `updated_at`, `postal_address`, `title`) VALUES
-(1, 'Afya Annex Kenyatta National Hospital Grounds', '+254-775 597 297', 'info@nascop.or.ke', '2018-10-13 06:12:00', '2018-10-13 08:08:30', 'P.O Box 19361 – 00202,Nairobi, Kenya.', 'PrEP Kenya');
+(1, 'Afya Annex Kenyatta National Hospital Grounds', '+254-775 597 297', '	ulizanascop@gmail.com', '2018-10-13 06:12:00', '2018-10-13 08:08:30', 'P.O Box 19361 – 00202,Nairobi, Kenya.', 'PrEP Kenya');
 
 -- --------------------------------------------------------
 
@@ -95,8 +97,8 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '', 6),
 (7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '', 7),
 (8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '', 8),
-(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":"0"}', 10),
-(10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1","taggable":"0"}', 11),
+(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"roles\",\"pivot\":\"0\"}', 10),
+(10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"user_roles\",\"pivot\":\"1\",\"taggable\":\"0\"}', 11),
 (11, 1, 'locale', 'text', 'Locale', 0, 1, 1, 1, 1, 0, '', 12),
 (12, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '', 12),
 (13, 2, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '', 1),
@@ -125,7 +127,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (36, 9, 'question', 'text', 'Question', 0, 1, 1, 1, 1, 1, NULL, 2),
 (37, 9, 'answer', 'text', 'Answer', 0, 1, 1, 1, 1, 1, NULL, 3),
 (38, 9, 'category', 'text', 'Category', 0, 1, 1, 1, 1, 1, NULL, 4),
-(39, 8, 'section_hasone_faq_relationship', 'relationship', 'faqs', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Faq","table":"faqs","type":"hasOne","column":"id","key":"question","label":"question","pivot_table":"categories","pivot":"0","taggable":"0"}', 8),
+(39, 8, 'section_hasone_faq_relationship', 'relationship', 'faqs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Faq\",\"table\":\"faqs\",\"type\":\"hasOne\",\"column\":\"id\",\"key\":\"question\",\"label\":\"question\",\"pivot_table\":\"categories\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8),
 (40, 11, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
 (41, 11, 'title', 'text', 'Title', 0, 1, 1, 1, 1, 1, NULL, 2),
 (42, 11, 'number', 'text', 'Number', 0, 1, 1, 1, 1, 1, NULL, 3),
@@ -158,7 +160,12 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (70, 17, 'page', 'text', 'Page', 0, 1, 1, 1, 1, 1, NULL, 4),
 (71, 17, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 5),
 (72, 17, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 6),
-(73, 17, 'type', 'text', 'Type', 0, 1, 1, 1, 1, 1, NULL, 7);
+(73, 17, 'type', 'text', 'Type', 0, 1, 1, 1, 1, 1, NULL, 7),
+(74, 22, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(75, 22, 'question', 'text', 'Question', 0, 1, 1, 1, 1, 1, NULL, 2),
+(76, 22, 'options', 'text', 'Options', 0, 1, 1, 1, 1, 1, NULL, 3),
+(77, 22, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 4),
+(78, 22, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -192,15 +199,18 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', '', '', 1, 0, NULL, '2018-10-08 09:08:08', '2018-10-08 09:08:08'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2018-10-08 09:08:08', '2018-10-08 09:08:08'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, '', '', 1, 0, NULL, '2018-10-08 09:08:08', '2018-10-08 09:08:08'),
-(5, 'homeherotext', 'homeherotext', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-08 10:33:09', '2018-10-08 10:33:09'),
-(6, 'homeherotexts', 'homeherotexts', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-08 10:43:19', '2018-10-08 10:43:19'),
-(8, 'sections', 'sections', 'Section', 'Sections', NULL, 'App\\Section', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 05:31:21', '2018-10-09 05:31:21'),
-(9, 'faqs', 'faqs', 'Faq', 'Faqs', NULL, 'App\\Faq', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 05:37:07', '2018-10-09 05:37:07'),
-(11, 'homenumbers', 'homenumbers', 'Homenumber', 'Homenumbers', NULL, 'App\\Homenumber', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
-(13, 'contacts', 'contacts', 'Contact', 'Contacts', NULL, 'App\\Contact', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-13 06:09:10', '2018-10-13 06:09:10'),
-(14, 'partners', 'partners', 'Partner', 'Partners', NULL, 'App\\Partner', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-16 07:40:06', '2018-10-16 07:40:06'),
-(16, 'misc', 'misc', 'Misc', 'Miscs', NULL, 'App\\Misc', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-16 10:13:20', '2018-10-16 10:13:20'),
-(17, 'miscs', 'miscs', 'Misc', 'Miscs', NULL, 'App\\Misc', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null}', '2018-10-16 10:15:37', '2018-10-16 10:15:37');
+(5, 'homeherotext', 'homeherotext', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-08 10:33:09', '2018-10-08 10:33:09'),
+(6, 'homeherotexts', 'homeherotexts', 'Homeherotext', 'Homeherotexts', NULL, 'App\\Homeherotext', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-08 10:43:19', '2018-10-08 10:43:19'),
+(8, 'sections', 'sections', 'Section', 'Sections', NULL, 'App\\Section', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-09 05:31:21', '2018-10-09 05:31:21'),
+(9, 'faqs', 'faqs', 'Faq', 'Faqs', NULL, 'App\\Faq', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-09 05:37:07', '2018-10-09 05:37:07'),
+(11, 'homenumbers', 'homenumbers', 'Homenumber', 'Homenumbers', NULL, 'App\\Homenumber', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-09 06:00:52', '2018-10-09 06:00:52'),
+(13, 'contacts', 'contacts', 'Contact', 'Contacts', NULL, 'App\\Contact', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-13 06:09:10', '2018-10-13 06:09:10'),
+(14, 'partners', 'partners', 'Partner', 'Partners', NULL, 'App\\Partner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-16 07:40:06', '2018-10-16 07:40:06'),
+(16, 'misc', 'misc', 'Misc', 'Miscs', NULL, 'App\\Misc', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-16 10:13:20', '2018-10-16 10:13:20'),
+(17, 'miscs', 'miscs', 'Misc', 'Miscs', NULL, 'App\\Misc', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-16 10:15:37', '2018-10-16 10:15:37'),
+(19, 'riskassessment', 'riskassessment', 'Riskassessment', 'Riskassessments', NULL, 'App\\Riskassessment', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-17 10:33:16', '2018-10-17 10:33:16'),
+(21, 'rast', 'rast', 'Rast', 'Rasts', NULL, 'App\\Rast', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-17 10:35:36', '2018-10-17 10:35:36'),
+(22, 'rasts', 'rasts', 'Rast', 'Rasts', NULL, 'App\\Rast', NULL, NULL, NULL, 0, 0, '{\"order_column\":null,\"order_display_column\":null}', '2018-10-17 10:37:38', '2018-10-17 10:43:14');
 
 -- --------------------------------------------------------
 
@@ -223,26 +233,43 @@ CREATE TABLE `faqs` (
 --
 
 INSERT INTO `faqs` (`id`, `question`, `answer`, `category`, `section_id`, `created_at`, `updated_at`) VALUES
-(1, 'What Is PrEP', 'Pre-Exposure Prophylaxis (PrEP) is an antiretroviral drug taken daily by HIV negative people who are at a substantial ongoing risk of HIV infection to reduce their chances of contracting the virus.  PrEP is not a vaccine and does not prevent from STI’s and pregnancy. It should be used with other prevention strategies such as condoms and contraceptives.', 'User', 1, '2018-10-16 09:07:06', '2018-10-16 06:07:06'),
-(2, 'Is PrEP for Everyone', 'PrEP can be taken by anyone who is at a substantial on-going risk of acquiring HIV.', 'User', 2, '2018-10-16 09:07:35', '2018-10-16 06:07:35'),
-(3, 'Is it true that Prep Prevents HIV', 'If used consistently and as prescribed (one pill a day taken at least seven days before exposure), studies have shown that PrEP reduces the risk of contracting HIV from sexual contact by more than 90%', 'User', 2, '2018-10-16 09:11:03', '2018-10-09 06:24:10'),
-(4, 'When should PrEP be initiated', 'THE CHOICE IS YOURS!!PrEP should only be initiated by a health care provider when the client is willing and ready.  The Health Care provider will carry out a HIV test and counsel the client. A risk assessment to establish eligibility and  inform the client of other prevention strategies.', 'User', 4, '2018-10-16 10:25:15', '2018-10-09 06:24:48'),
-(5, 'Who is a potential PrEP user', 'A HIV negative person who is at an ongoing risk of HIV infection or if the client has a sexual partner who is:  Known to be HIV positive and not on ART  Is on ART but does not take medication consistently or has not achieved viral suppression  Also if the client:  Has multiple sexual partners of unknown HIV status  Has multiple sexual partners  Has frequent STI’s  Engages in transactional sex (sex in exchange for gifts, money)  Recurrently uses Post Exposure Prophylaxis (PEP)  Is in a sero-discordant relationship trying to conceive  Experiences frequent condom bursts or is unable to negotiate condom use with persons on unknown HIV status  PrEP may also be offered to pregnant and breastfeeding women or women in a sero-discordant relationship trying to conceive.', 'Provider', 0, '2018-10-09 06:28:08', '2018-10-09 06:28:08'),
-(6, 'How does prep work', 'If PrEP is taken correctly and consistently, it helps build a protective layer around body cells e.g. having unprotected sex with someone who is living with HIV or coming into contact with infected body fluid, PrEP can stop the virus from establishing itself in the body', 'Provider', 0, '2018-10-09 06:29:17', '2018-10-09 06:29:17'),
-(7, 'How do I ensure that the client is comfortable to discuss their risk', 'Providers should make every effort to establish rapport with potential PrEP clients, provide adequate privacy and offer assurances of confidentiality. A non-judgmental attitude will contribute towards open conversations where clients will be free to share accurate information on their ongoing risk', 'Provider', 0, '2018-10-09 06:30:33', '2018-10-09 06:30:33'),
-(8, 'What resources are available to support PrEP provision', 'There are a variety of resources available to support Health Care Providers in initiating, administering and dispensing PrEP >>link to resources<< i. Provider tool Kit  ii. Guidelines', 'Provider', 0, '2018-10-09 06:31:06', '2018-10-09 06:31:06'),
-(9, 'Who can dispense PrEP', 'PrEP must be prescribed by a healthcare professional who has completed training on the national guidelines for the use of ARVs as PrEP .', 'Provider', 0, '2018-10-09 06:31:47', '2018-10-09 06:31:47'),
-(10, 'Where is PrEP Offered in Kenya', 'In Kenya PrEP is currently offered in 900 health facilities in various service delivery points such as CCC’s, PMTCT Clinics, MCH Clinics, FP Clinics, OPD, IPD. PrEP is also available in Drop in Centres (DICES) and safe spaces >>link to map locator)   ', 'Provider', 0, '2018-10-09 06:33:05', '2018-10-09 06:33:05'),
-(11, 'Will PrEP be effective if a client does not adhere to one pill a day', 'Missing of pills greatly reduces the ability of PrEP to provide full protection against HIV infection. For PrEP to be effective, medication should be taken as instructed by the health provider.', 'Provider', 0, '2018-10-09 06:33:38', '2018-10-09 06:33:38'),
-(12, 'What are the side-effects of PrEP', 'Side effects related to PrEP may be experienced occasionally for a short period. These may include: Headaches, weight loss, nausea, vomiting, and abdominal discomfort. These side effects will reduce after a few weeks of taking PrEP', 'Provider', 0, '2018-10-09 06:34:36', '2018-10-09 06:34:36'),
-(13, 'How long should a client take PrEP', 'Use of PrEP will be based on the continued risk of a client to contract HIV', 'User', 0, '2018-10-09 06:35:05', '2018-10-09 06:35:05'),
-(14, 'How often should a repeat HIV test be carried out when a client is on PrEP', 'HIV testing should be done every three (3) months. However, in the monthly re-fill visits the provider should reassess risk of HIV infection and offer risk reduction counselling.', 'Provider', 0, '2018-10-09 06:35:49', '2018-10-09 06:35:49'),
-(15, 'When should I discontinue prescribing PrEp for a client', 'If the client sero-converts (becomes HIV positive) If there is a reduction in the risk of contracting HIV  If the client(s) kidney (renal) function is low after conducting laboratory tests If a client requests to stop taking PrEP If a client is not adhering to PrEP  If a client is in a discordant relationship and the HIV positive partner has achieved viral suppression', 'Provider', 0, '2018-10-09 06:37:17', '2018-10-09 06:37:17'),
-(16, 'What should the client know about combination prevention strategies?', NULL, NULL, 0, '2018-10-09 06:37:33', '2018-10-09 06:37:33'),
-(17, 'What happens when a client seroconverts while on PrEP', 'If a client sero-converts while on PrEP, it is important to counsel the client and immediately link to care and treatment.', 'Provider', 0, '2018-10-09 06:38:15', '2018-10-09 06:38:15'),
+(1, 'What Is PrEP', 'Pre-Exposure Prophylaxis (PrEP) is a form of HIV prevention in which a HIV negative person at high risk of HIV infection takes drugs daily to prevent HIV infection. PrEP is not a vaccine and does not prevent from Sexually Transmitted Infections (STI’s) and pregnancy. It should be used with other prevention strategies such as condoms and contraceptives.', 'User', 0, '2018-11-05 09:02:42', '2018-10-16 06:07:06'),
+(2, 'Who is PrEP for', 'PrEP is for anyone at ongoing risk of getting HIV infected. For example:\nIn a HIV serodiscordant relationship where the sexual partner with HIV has not been on effective (suppressive) therapy for the preceding 6 months, or  HIV serodiscordant couples trying to conceive\nPregnant or breastfeeding women whose sex partners are HIV positive or at high risk of HIV infection \nSexual partner/s of unknown HIV status and is/are at high-risk for HIV infection (has multiple sexual partners, has had STIs, engages in transactional sex, injects drugs, or from high HIV burden settings)\nEngaging in transactional sex\nRecent sexually transmitted infection\nRecurrent use of post-exposure prophylaxis (PEP)\nHistory of sex whilst under the influence of alcohol or recreational drugs as a habit\nInconsistent or no condom use or unable to negotiate condom use during intercourse with persons of unknown HIV status\nInjection drug use where injection equipment is shared', 'User', 0, '2018-10-18 09:10:15', '2018-10-17 10:01:43'),
+(3, 'How does it work', 'If used consistently and as prescribed (one pill a day taken at least seven days before exposure), studies have shown that PrEP reduces the risk of contracting HIV from sexual contact by more than 90%PrEP works effectively when taken daily as prescribed by your health service provider. It takes up to 7 days of daily use of PrEP tablets to achieve maximum protection and continued use daily as long as you are at risk of HIV infection.', 'User', 0, '2018-10-18 09:10:20', '2018-10-09 06:24:10'),
+(4, 'Is PrEP for life', 'PrEP is not meant to be taken for life, it is only taken as long as one is still at risk of getting infected with HIV.', 'User', 0, '2018-10-18 09:10:24', '2018-10-09 06:24:48'),
+(5, 'I want to stop taking PrEP - What should I do', 'If you have decided that PrEP is no longer your HIV prevention option, discuss it with your health care provider so that you are given information on how to stop and provided with other HIV prevention options. You can stop using PrEP 28 days after your last possible HIV exposure.', 'User', 0, '2018-10-18 06:30:02', '2018-10-09 06:28:08'),
+(6, 'Does PrEP have side effects', 'Just like any other medication, PrEP has side effects which varies from individual to individual. For PrEP, they include nausea, diarrhoea, vomiting, decreased appetite, abdominal cramping or flatulence; dizziness or headaches. Typically, these symptoms start in the first few days or weeks of PrEP use and last a few days and almost always less than 1 month. Discuss with your provider if these side effects are severe or they persist for longer than one month.', 'User', 0, '2018-10-18 06:30:10', '2018-10-09 06:29:17'),
+(7, 'Where can I find PrEP', '[link-map]', 'User', 0, '2018-10-18 06:58:04', '2018-10-09 06:30:33'),
+(8, 'Does PrEP work', 'Yes, PrEP works if taken daily as prescribed by your health care provider.', 'User', 0, '2018-10-18 06:30:23', '2018-10-09 06:31:06'),
+(9, 'Is PrEP safe', 'Yes, studies have proven that PrEP is a safe method of preventing a HIV negative person from getting infected with HIV.', 'User', 0, '2018-10-18 06:30:27', '2018-10-09 06:31:47'),
+(10, 'Must I use a condom when I use PrEP', 'It is recommended that PrEP be used in combination with other HIV prevention methods such as condoms. This is because PrEP does not protect you from STIs and pregnancy.', 'User', 0, '2018-10-18 06:30:31', '2018-10-09 06:33:05'),
+(11, 'Can I get STI when using PrEP', 'Yes, you can still get infected with an STI while on PrEP. This is because PrEP does not prevent you from getting STIs. It is therefore recommended that you use condoms while on PrEP.', 'User', 0, '2018-10-18 06:31:28', '2018-10-09 06:33:38'),
+(12, 'Can I get pregnant when on PrEP', 'Yes, you can become pregnant while on PrEP. This is because PrEP does not prevent pregnancy. For pregnancy prevention, you can use other contraceptives in the market. PrEP does not affect the effectiveness of contraceptives.', 'User', 0, '2018-10-18 06:31:57', '2018-10-09 06:34:36'),
+(13, 'Is PrEP the same as PEP', 'PrEP is not the same as PEP. PrEP stands for Pre-Exposure Prophylaxis meaning it is used before one is exposed to HIV virus. PEP stands for Post-Exposure Prophylaxis meaning it is used after one is exposed to HIV virus.', 'User', 0, '2018-10-18 06:32:23', '2018-10-09 06:35:05'),
+(14, 'Can I get HIV while on PrEP', 'One can get HIV infected if PrEP is not taken consistently as prescribed by the health care provider. ', 'User', 0, '2018-10-18 06:34:05', '2018-10-09 06:35:49'),
+(15, 'Who is a potential PrEP client', 'A HIV negative person who is at an ongoing risk of HIV infection or if the client has a sexual partner who is:\nKnown to be HIV positive and not on ART \nIs on ART but does not take medication consistently or has not achieved viral suppression \nAlso if the client:\nHas multiple sexual partners of unknown HIV status \nHas multiple sexual partners \nHas frequent STI’s \nEngages in transactional sex (sex in exchange for gifts, money)\nRecurrently uses Post Exposure Prophylaxis (PEP)\nIs in a sero-discordant relationship trying to conceive\nExperiences frequent condom bursts or is unable to negotiate condom use with persons on unknown HIV status \nPrEP may also be offered to pregnant and breastfeeding women or women in a sero-discordant relationship trying to conceive. \n', 'Provider', 0, '2018-10-18 06:39:41', '2018-10-09 06:37:17'),
+(16, 'How does PrEP work', 'If PrEP is taken correctly and consistently, it helps build a protective layer around body cells e.g. having unprotected sex with someone who is living with HIV or coming into contact with infected body fluid, PrEP can stop the virus from establishing itself in the body', 'Provider', 0, '2018-10-18 06:41:28', '2018-10-09 06:37:33'),
+(17, ' How do I ensure that the client is comfortable to discuss their risk', 'Providers should make every effort to establish rapport with potential PrEP clients, provide adequate privacy and offer assurances of confidentiality. A non-judgmental attitude will contribute towards open conversations where clients will be free to share accurate information on their ongoing risk', 'Provider', 0, '2018-10-18 06:42:02', '2018-10-09 06:38:15'),
 (18, 'What are the focus areas in the implementation of oral PrEP in Kenya', 'Leadership and governance – Focus on leadership and governance to increase ownership and coordination of HIV PrEP response at all level  Service delivery – Service provision approaches and operations around PrEP implementation  Commodity security - Access and availability of commodities to users underpins the success of PrEP implementation  Communications advocacy and community engagement – Effective communication to ensure meaningful engagement of stakeholders for successful rollout of PrEP in Kenya  Monitoring and evaluation - How PrEP national roll-out will be incorporated into the mainstream HIV M&E health sector reporting  Research and impact evaluation - Key research and impact evaluation agenda for PrEP implementation and defines strategies for formulating, conducting, coordinating and funding implementation science research within the context of PrEP.  Financing and resource mobilisation - Cost estimates and impact of PrEP as a prevention strategy to inform the implementation and scale-up of PrEP services', 'Policymaker', 0, '2018-10-09 06:40:24', '2018-10-09 06:40:24'),
 (19, 'What areas are supported by PrEP implementing partners?', 'There are a variety of partners who support in the implementation and scale up of PrEP across Kenya. Currently areas that are supported are:  Monitoring and Evaluation  Capacity building  Laboratory services  IEC materials', 'Policymaker', 0, '2018-10-09 06:43:28', '2018-10-09 06:43:28'),
-(20, 'Default', 'Default', 'Default', 0, '2018-10-09 07:22:17', '2018-10-09 07:22:17');
+(20, 'Default', 'Default', 'Default', 0, '2018-10-09 07:22:17', '2018-10-09 07:22:17'),
+(21, 'What resources are available to support PrEP provision\r\n', 'There are a variety of resources available to support Health Care Providers in initiating, administering and dispensing PrEP', 'Provider', 0, '2018-10-18 06:46:11', '2018-10-18 06:46:11'),
+(22, 'Who can dispense PrEP', 'PrEP must be prescribed by a healthcare professional who has completed training on the national guidelines for the use of ARVs as PrEP . ', 'Provider', 0, '2018-10-18 06:46:11', '2018-10-18 06:46:11'),
+(23, 'Where is PrEP offered in Kenya?', 'In Kenya PrEP is currently offered in 900 health facilities in various service delivery points such as CCC’s, PMTCT Clinics, MCH Clinics, FP Clinics, OPD, IPD. PrEP is also available in Drop in Centres (DICES) and safe spaces', 'Provider', 0, '2018-10-18 06:46:11', '2018-10-18 06:46:11'),
+(24, 'Will PrEP be effective if a client does not adhere to one pill a day', 'Missing of pills greatly reduces the ability of PrEP to provide full protection against HIV infection. For PrEP to be effective, medication should be taken as instructed by the health provider', 'Provider', 0, '2018-10-18 06:46:11', '2018-10-18 06:46:11'),
+(25, 'What are side effects of PrEP', 'Side effects related to PrEP may be experienced occasionally for a short period. These may include: Headaches, weight loss, nausea, vomiting, and abdominal discomfort. These side effects will reduce after a few weeks of taking PrEP \r\n', 'Provider', 0, '2018-10-18 06:46:11', '2018-10-18 06:46:11'),
+(26, 'How long should a client take PrEP', 'Use of PrEP will be based on the continued risk of a client to contract HIV ', 'Provider', 0, '2018-10-18 06:48:42', '2018-10-18 06:48:42'),
+(27, ' How often should a repeat HIV test be carried out when a client is on PrEP', 'HIV testing should be done every three (3) months. However, in the monthly re-fill visits the provider should reassess risk of HIV infection and offer risk reduction counselling. \r\n \r\n', 'Provider', 0, '2018-10-18 06:48:42', '2018-10-18 06:48:42'),
+(28, 'When should I discontinue prescribing PrEP for a client', 'If the client sero-converts (becomes HIV positive)\r\nIf there is a reduction in the risk of contracting HIV \r\nIf the client(s) kidney (renal) function is low after conducting laboratory tests\r\nIf a client requests to stop taking PrEP\r\nIf a client is not adhering to PrEP \r\nIf a client is in a discordant relationship and the HIV positive partner has achieved viral suppression', 'Provider', 0, '2018-10-18 06:49:28', '2018-10-18 06:49:28'),
+(29, 'How does PrEP adherence affect efficacy', 'Effectiveness of PrEP is highly dependent on adherence. Missing a pill a day may affect the effectiveness of PrEP to be able to prevent HIV.\r\nOnce missed, it is recommended that you take one pill immeadiately the client remembers.', 'Provider', 0, '2018-10-18 06:51:31', '2018-10-18 06:51:31'),
+(30, 'Introduction of Oral PrEP in Kenya', 'Since the approval of oral PrEP by Food and Drug Administration (FDA) and the recommendation by WHO on the use of PrEP in 2012, Kenya rolled out PrEP through partner demonstration projects focusing on Men who have Sex with Men (MSM), Female Sex Workers (FSW),  Adolescent Girls and Young Women (AGYW) and Sero-discordant couples at high risk of HIV in the Kenyan context. \r\n\r\nKenya Pharmacy and Poisons Board approved the distribution of PrEP in 2015. Oral PrEP was then included in the National ART guidelines in July 2016. \r\n\r\nIn May 2017, the National official scale up of PrEP was carried out in Kenya. To date, over 900 facilities are providing PrEP to various populations in Kenya \r\n\r\n\r\n', 'Policymaker', 0, '2018-10-18 06:56:28', '2018-10-18 06:56:28'),
+(31, 'How many facilities are currently offering PrEP in Kenya (geographical spread)\r\n', 'There are over 900 health facilities providing PrEP to populations in Kenya\r\n[linkmap]', NULL, 0, '2018-10-18 06:56:28', '2018-10-18 06:56:28'),
+(32, 'The future of PrEP in Kenya', '1. CAB (Cabotegravir) LA (Long Acting) Injectable in the future pipeline\r\n2. Daprivirine ring', 'Policymaker', 0, '2018-10-18 06:57:03', '2018-10-18 06:57:03'),
+(33, 'What is Oral PrEP\r\n', 'Pre-Exposure Prophylaxis (PrEP) is a form of HIV prevention in which a HIV negative person at high risk of HIV infection takes drugs daily to prevent HIV infection. PrEP is not a vaccine and does not prevent from Sexually Transmitted Infections (STI’s) and pregnancy. It should be used with other prevention strategies such as condoms and contraceptives.', 'Home', 1, '2018-11-05 09:02:25', '2018-10-18 09:06:47'),
+(34, 'Is PrEP for Everyone', 'PrEP can be taken by anyone who is at a substantial on-going risk of acquiring HIV. \r\n', 'Home', 2, '2018-10-18 09:12:27', '2018-10-18 09:06:47'),
+(35, 'Is it true that PrEP Prevents HIV', 'If used consistently and as prescribed (one pill a day taken at least seven days before exposure), studies have shown that PrEP reduces the risk of contracting HIV from sexual contact by more than 90% ', 'Home', 2, '2018-10-18 09:08:02', '2018-10-18 09:08:02'),
+(36, 'When should PrEP be initiated \r\n', 'THE CHOICE IS YOURS!!PrEP should only be initiated by a health care provider when you are willing and ready. \nThe Health Care provider will carry out a HIV test and counsel you. A risk assessment to establish eligibility will also be carried out and you will be  informed of other prevention strategies.', 'Home', 4, '2018-10-18 15:07:06', '2018-10-18 09:10:00'),
+(37, 'PrEP as part of the HIV combination prevention strategies ', 'PrEP is one of the strategies that can be used to prevent HIV amonst many others. Studies have shown that effective HIV combination prevention strategies require a combination of biomedical, behavioural and structural interventions. These are:-\r\n\r\nBiomedical interventions – Condoms, Voluntary Male Medical Circumcision (VMMC), Prevention of Mother to Child Transmission (PMTCT), Sexually Transmitted Infections (STI) treatment \r\nBehavioural interventions – behavioural change programmes \r\nStructural interventions – Enrolling girls and young women in schools, providing means for livelihood for girls and young women to empower them\r\n', 'Policymaker', 0, '2018-10-18 16:34:15', '2018-10-18 16:34:15');
 
 -- --------------------------------------------------------
 
@@ -293,8 +320,8 @@ CREATE TABLE `homenumbers` (
 
 INSERT INTO `homenumbers` (`id`, `title`, `number`, `subtitle`, `created_at`, `updated_at`) VALUES
 (1, 'People living with HIV', 1500000, '2016', '2018-10-09 07:09:00', '2018-10-09 07:10:53'),
-(2, 'New HIV Infections', 62000, '2016', '2018-10-09 07:09:48', '2018-10-09 07:09:48'),
-(3, 'Clients on PrEP', 19000, '2016', '2018-10-09 07:10:41', '2018-10-09 07:10:41');
+(2, 'New HIV Infections', 52800, '2016', '2018-10-09 07:09:48', '2018-10-09 07:09:48'),
+(3, 'Clients on PrEP', 17000, '2016', '2018-10-09 07:10:41', '2018-10-09 07:10:41');
 
 -- --------------------------------------------------------
 
@@ -371,13 +398,17 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (23, 3, 'Gallery', '', '_self', NULL, '#000000', NULL, 21, '2018-10-12 13:40:12', '2018-10-12 13:40:12', 'resources/gallery', NULL),
 (24, 3, 'Publications', '', '_self', NULL, '#000000', NULL, 22, '2018-10-12 13:40:41', '2018-10-12 13:40:41', 'resources/publications', NULL),
 (25, 3, 'Policies and Guidelines', '', '_self', NULL, '#000000', NULL, 23, '2018-10-12 13:41:10', '2018-10-12 13:42:13', 'resources/guidelines', 'null'),
-(26, 4, 'Users', '/users', '_self', NULL, '#000000', NULL, 24, '2018-10-12 13:49:33', '2018-10-12 13:51:23', NULL, ''),
+(26, 4, 'Users', '/user', '_self', NULL, '#000000', NULL, 24, '2018-10-12 13:49:33', '2018-11-02 05:28:04', NULL, ''),
 (27, 4, 'Providers', '/providers', '_self', NULL, '#000000', NULL, 25, '2018-10-12 13:49:51', '2018-10-12 13:50:58', NULL, ''),
 (28, 4, 'Policy Makers', '/policy-makers', '_self', NULL, '#000000', NULL, 26, '2018-10-12 13:50:13', '2018-10-12 13:51:11', NULL, ''),
 (29, 1, 'Contacts', '', '_self', NULL, NULL, NULL, 27, '2018-10-13 06:09:11', '2018-10-13 06:09:11', 'voyager.contacts.index', NULL),
 (30, 1, 'Partners', '', '_self', NULL, NULL, NULL, 28, '2018-10-16 07:40:06', '2018-10-16 07:40:06', 'voyager.partners.index', NULL),
 (31, 1, 'Miscs', '', '_self', NULL, NULL, NULL, 29, '2018-10-16 10:13:21', '2018-10-16 10:13:21', 'voyager.misc.index', NULL),
-(32, 1, 'Miscs', '', '_self', NULL, NULL, NULL, 30, '2018-10-16 10:15:37', '2018-10-16 10:15:37', 'voyager.miscs.index', NULL);
+(32, 1, 'Miscs', '', '_self', NULL, NULL, NULL, 30, '2018-10-16 10:15:37', '2018-10-16 10:15:37', 'voyager.miscs.index', NULL),
+(33, 1, 'Riskassessments', '', '_self', NULL, NULL, NULL, 31, '2018-10-17 10:33:17', '2018-10-17 10:33:17', 'voyager.riskassessment.index', NULL),
+(34, 1, 'Rasts', '', '_self', NULL, NULL, NULL, 32, '2018-10-17 10:35:36', '2018-10-17 10:35:36', 'voyager.rast.index', NULL),
+(35, 1, 'Rasts', '', '_self', NULL, NULL, NULL, 33, '2018-10-17 10:37:38', '2018-10-17 10:37:38', 'voyager.rasts.index', NULL),
+(36, 2, 'Assessment', '/assessment/manager', '_self', NULL, '#000000', NULL, 34, '2018-11-03 02:35:41', '2018-11-03 02:35:53', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -444,7 +475,8 @@ CREATE TABLE `miscs` (
 --
 
 INSERT INTO `miscs` (`id`, `title`, `content`, `page`, `created_at`, `updated_at`, `type`) VALUES
-(1, 'Journey In Kenya', '<iframe id="iframe_container" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" allow="autoplay; fullscreen" src="https://prezi.com/embed/-mjhkuc1mkhy/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE43MHdLNWpsdFJLb2ZHanI5ejdzdzcvc1ArZHhLb1VUODMybFN0ODV3PT0&amp;landing_sign=3KjsjTY9gghydIOTzUkfnOqpWcY4dx7xIVLT2r_95KQ" width="550" height="400" frameborder="0"></iframe>', 'journeyinkenya', '2018-10-16 10:22:30', '2018-10-16 10:22:30', 'embed');
+(1, 'Journey In Kenya', '<iframe id=\"iframe_container\" webkitallowfullscreen=\"\" mozallowfullscreen=\"\" allowfullscreen=\"\" allow=\"autoplay; fullscreen\" src=\"https://prezi.com/embed/-mjhkuc1mkhy/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE43MHdLNWpsdFJLb2ZHanI5ejdzdzcvc1ArZHhLb1VUODMybFN0ODV3PT0&amp;landing_sign=3KjsjTY9gghydIOTzUkfnOqpWcY4dx7xIVLT2r_95KQ\" width=\"960\" height=\"400\" frameborder=\"0\"></iframe>', 'journeyinkenya', '2018-10-16 10:22:30', '2018-10-16 10:22:30', 'embed'),
+(2, 'Recommendation', 'If you answer YES to any of the screening questions and if your sexual partner is HIV positive. Kindly obtain more information about PrEP [linktouser] and visit your nearest Health facility for a further PrEP assessment.', 'home', '2018-10-17 12:30:58', '2018-10-17 12:30:58', 'text');
 
 -- --------------------------------------------------------
 
@@ -599,7 +631,22 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (68, 'read_miscs', 'miscs', '2018-10-16 10:15:37', '2018-10-16 10:15:37'),
 (69, 'edit_miscs', 'miscs', '2018-10-16 10:15:37', '2018-10-16 10:15:37'),
 (70, 'add_miscs', 'miscs', '2018-10-16 10:15:37', '2018-10-16 10:15:37'),
-(71, 'delete_miscs', 'miscs', '2018-10-16 10:15:37', '2018-10-16 10:15:37');
+(71, 'delete_miscs', 'miscs', '2018-10-16 10:15:37', '2018-10-16 10:15:37'),
+(72, 'browse_riskassessment', 'riskassessment', '2018-10-17 10:33:16', '2018-10-17 10:33:16'),
+(73, 'read_riskassessment', 'riskassessment', '2018-10-17 10:33:16', '2018-10-17 10:33:16'),
+(74, 'edit_riskassessment', 'riskassessment', '2018-10-17 10:33:16', '2018-10-17 10:33:16'),
+(75, 'add_riskassessment', 'riskassessment', '2018-10-17 10:33:16', '2018-10-17 10:33:16'),
+(76, 'delete_riskassessment', 'riskassessment', '2018-10-17 10:33:16', '2018-10-17 10:33:16'),
+(77, 'browse_rast', 'rast', '2018-10-17 10:35:36', '2018-10-17 10:35:36'),
+(78, 'read_rast', 'rast', '2018-10-17 10:35:36', '2018-10-17 10:35:36'),
+(79, 'edit_rast', 'rast', '2018-10-17 10:35:36', '2018-10-17 10:35:36'),
+(80, 'add_rast', 'rast', '2018-10-17 10:35:36', '2018-10-17 10:35:36'),
+(81, 'delete_rast', 'rast', '2018-10-17 10:35:36', '2018-10-17 10:35:36'),
+(82, 'browse_rasts', 'rasts', '2018-10-17 10:37:38', '2018-10-17 10:37:38'),
+(83, 'read_rasts', 'rasts', '2018-10-17 10:37:38', '2018-10-17 10:37:38'),
+(84, 'edit_rasts', 'rasts', '2018-10-17 10:37:38', '2018-10-17 10:37:38'),
+(85, 'add_rasts', 'rasts', '2018-10-17 10:37:38', '2018-10-17 10:37:38'),
+(86, 'delete_rasts', 'rasts', '2018-10-17 10:37:38', '2018-10-17 10:37:38');
 
 -- --------------------------------------------------------
 
@@ -687,7 +734,22 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (68, 1),
 (69, 1),
 (70, 1),
-(71, 1);
+(71, 1),
+(72, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(76, 1),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1),
+(81, 1),
+(82, 1),
+(83, 1),
+(84, 1),
+(85, 1),
+(86, 1);
 
 -- --------------------------------------------------------
 
@@ -712,6 +774,64 @@ CREATE TABLE `posts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rast`
+--
+
+CREATE TABLE `rast` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `question` text COLLATE utf8mb4_unicode_ci,
+  `answers` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rasts`
+--
+
+CREATE TABLE `rasts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `riskassessment`
+--
+
+CREATE TABLE `riskassessment` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `question` text COLLATE utf8mb4_unicode_ci,
+  `options` text COLLATE utf8mb4_unicode_ci,
+  `type` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'question',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `riskassessment`
+--
+
+INSERT INTO `riskassessment` (`id`, `question`, `options`, `type`, `created_at`, `updated_at`) VALUES
+(1, 'What is your HIV status?', 'Positive,Negative,Unknown', 'question', NULL, NULL),
+(2, 'What is the HIV status of your sexual partner?', 'Positive,Negative,Unknown', 'question', NULL, NULL),
+(3, 'Have you had sex with a person of unknown HIV status or is HIV Positive without a condom?', 'Yes,No', 'question', NULL, NULL),
+(4, 'Have you engaged in sex for exchange of money or other favors?', 'Yes,No', 'question', NULL, NULL),
+(5, 'Have you been diagnosed or treated with a Sexually Transmitted Infection(STI)?', 'Yes,No', 'question', NULL, NULL),
+(6, 'Have you shared needles while injecting  drugs?', 'Yes,No', 'question', '2018-10-17 13:56:19', '2018-10-17 13:56:19'),
+(7, 'Have you been forced to have sex against your will or physically abused by your sexual partner (s)? ', 'Yes,No', 'question', '2018-10-17 13:56:19', '2018-10-17 13:56:19'),
+(8, 'Do you recurrently use Post-exposure Prophylaxis (PEP)', 'Yes,No', 'question', '2018-10-17 13:58:32', '2018-10-17 13:58:32'),
+(9, 'If you answer YES to any of the screening questions and if your sexual partner is HIV positive. \r\n\r\nKindly obtain more information about PrEP <a href=\"{{url(\'user\')}}\">here</a> and visit your nearest Health facility for a further PrEP assessment.\r\n', NULL, 'answer', '2018-10-17 13:58:32', '2018-10-17 13:58:32');
 
 -- --------------------------------------------------------
 
@@ -761,14 +881,16 @@ CREATE TABLE `sections` (
 --
 
 INSERT INTO `sections` (`id`, `title`, `columns`, `hierrarchy`, `faq_id`, `created_at`, `updated_at`, `size`, `status`, `color`, `has_title`, `content`) VALUES
-(1, 'What Is Prep', 2, 1, 1, '2018-10-09 05:32:00', '2018-10-10 06:18:44', 'large', 'on', 'dark', 'no', 'faq-right'),
-(2, 'What Is Prep and Is it for everyone', 2, 2, 2, '2018-10-09 07:15:00', '2018-10-10 06:26:49', 'medium', 'on', 'primary', 'no', 'double-faq'),
+(1, 'What Is Prep', 2, 1, 1, '2018-10-09 05:32:00', '2018-10-10 06:18:44', 'medium', 'on', 'primary', 'no', 'faq-right'),
+(2, 'Is PrEP for everyone', 2, 2, 2, '2018-10-09 07:15:00', '2018-10-10 06:26:49', 'medium', 'on', 'dark', 'no', 'double-faq'),
 (3, 'Prep Prevents HIV', 2, 3, 3, '2018-10-09 07:15:00', '2018-10-10 06:19:49', 'medium', 'off', 'link', 'no', 'double-faq'),
-(4, 'When should Prep be Initiated', 2, 4, 4, '2018-10-09 07:16:00', '2018-10-12 11:51:36', 'medium', 'on', 'dark', 'no', 'faq-right'),
-(5, 'Facility Locator', 1, 5, 20, '2018-10-09 07:17:00', '2018-10-10 06:25:51', 'medium', 'off', 'light', 'yes', 'map'),
-(6, 'By The Numbers', 1, 6, 20, '2018-10-09 07:18:00', '2018-10-10 06:25:33', 'medium', 'off', 'dark', 'no', 'numbers'),
-(7, 'Partners', 1, 7, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'light', 'yes', 'partners'),
-(8, 'Contact Us', 1, 8, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'dark', 'yes', 'contact-form');
+(4, 'When should Prep be Initiated', 2, 4, 4, '2018-10-09 07:16:00', '2018-10-12 11:51:36', 'large', 'on', 'link', 'no', 'faq-right'),
+(5, 'Facility Locator', 1, 5, 20, '2018-10-09 07:17:00', '2018-10-10 06:25:51', 'large', 'on', 'white', 'yes', 'map'),
+(6, 'By The Numbers', 1, 6, 20, '2018-10-09 07:18:00', '2018-10-10 06:25:33', 'medium', 'on', 'link', 'no', 'numbers'),
+(7, 'Partners', 1, 7, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'off', 'light', 'yes', 'partners'),
+(8, 'Contact Us', 1, 9, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'light', 'yes', 'contact-form'),
+(9, 'Risk Assessment Tool (RAST)', 1, 8, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'large', 'on', 'light', 'no', 'rat'),
+(10, 'Testimonials', 1, 5, 20, '2018-10-09 07:19:00', '2018-10-10 06:26:07', 'medium', 'on', 'dark', 'yes', 'video');
 
 -- --------------------------------------------------------
 
@@ -845,7 +967,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Prep Admin', 'admin@prep.nascop', 'users/default.png', NULL, '$2y$10$2oUUFty8CBeFdSsWI3.jN.ODuGVyTAkqcyw1wOOrj7KR0aB3xWhI2', NULL, NULL, '2018-10-08 09:12:46', '2018-10-08 09:12:46');
+(1, 1, 'Prep Admin', 'admin@prep.nascop', 'users/default.png', NULL, '$2y$10$2oUUFty8CBeFdSsWI3.jN.ODuGVyTAkqcyw1wOOrj7KR0aB3xWhI2', 'pIowSbxoDAcaTzjOWDhunvkg2xcM1F2LWNVmHulKVeQ4Onoo42NxX93cZy4Y', NULL, '2018-10-08 09:12:46', '2018-10-08 09:12:46'),
+(2, 1, 'Prep Nascop', 'prep@nascop.org', 'users/default.png', NULL, '$2y$10$boyNBvTF2uBTOajE7widieNgGC5VmSz1aYLBo1Z3I9KTkn50HWVWC', NULL, NULL, '2018-10-17 10:40:47', '2018-10-17 10:40:47');
 
 -- --------------------------------------------------------
 
@@ -977,6 +1100,24 @@ ALTER TABLE `posts`
   ADD UNIQUE KEY `posts_slug_unique` (`slug`);
 
 --
+-- Indexes for table `rast`
+--
+ALTER TABLE `rast`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rasts`
+--
+ALTER TABLE `rasts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `riskassessment`
+--
+ALTER TABLE `riskassessment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -1028,101 +1169,139 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `faqs`
 --
 ALTER TABLE `faqs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
 --
 -- AUTO_INCREMENT for table `homeherotexts`
 --
 ALTER TABLE `homeherotexts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `homenumbers`
 --
 ALTER TABLE `homenumbers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `miscs`
 --
 ALTER TABLE `miscs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rast`
+--
+ALTER TABLE `rast`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rasts`
+--
+ALTER TABLE `rasts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `riskassessment`
+--
+ALTER TABLE `riskassessment`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Constraints for dumped tables
 --
@@ -1164,6 +1343,7 @@ ALTER TABLE `users`
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

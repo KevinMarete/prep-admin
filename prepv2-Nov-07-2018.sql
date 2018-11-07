@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 05, 2018 at 09:04 AM
+-- Generation Time: Nov 07, 2018 at 11:40 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.20
 
@@ -60,7 +60,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `physical_address`, `tel`, `email`, `created_at`, `updated_at`, `postal_address`, `title`) VALUES
-(1, 'Afya Annex Kenyatta National Hospital Grounds', '+254-775 597 297', '	ulizanascop@gmail.com', '2018-10-13 06:12:00', '2018-10-13 08:08:30', 'P.O Box 19361 – 00202,Nairobi, Kenya.', 'PrEP Kenya');
+(1, 'Afya Annex Kenyatta National Hospital Grounds', '+254-775 597 297', 'ulizanascop@gmail.com', '2018-10-13 06:12:00', '2018-10-13 08:08:30', 'P.O Box 19361 – 00202,Nairobi, Kenya.', 'PrEP Kenya');
 
 -- --------------------------------------------------------
 

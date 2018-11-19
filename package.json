@@ -27,7 +27,11 @@
         "sass-loader": "^7.1.0",
         "style-loader": "^0.23.0",
         "vue": "^2.5.7",
-        "webpack": "^4.20.2",
+        "webpack": "^3.11.0",
         "webpack-cli": "^3.1.2"
+    },
+    "dependencies": {
+        "laravel-echo": "^1.4.1",
+        "pusher-js": "^4.3.1"
     }
 }

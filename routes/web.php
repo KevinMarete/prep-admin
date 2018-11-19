@@ -24,3 +24,8 @@ Route::post('/sendMail', 'PrepFront@sendMail')->name('email');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+//Chat Routes
+Route::get('/chat', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');

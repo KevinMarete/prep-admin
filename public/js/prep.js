@@ -14013,10 +14013,10 @@ var app = new Vue({
         var _this = this;
 
         this.fetchMessages();
-        Echo.private('chat').listen('MessageSent', function (e) {
+        Echo.channel('chat').listen('MessageSent', function (e) {
             _this.messages.push({
-                message: e.message.message,
-                user: e.user
+                message_text: e.message.message_text,
+                user: e.messenger_id
             });
         });
     },
@@ -14032,7 +14032,7 @@ var app = new Vue({
         },
         addMessage: function addMessage(message) {
             this.messages.push(message);
-
+            console.log(message);
             axios.post('/messages', message).then(function (response) {
                 console.log(response.data);
             });
@@ -57190,13 +57190,13 @@ var render = function() {
     "ul",
     { staticClass: "chat" },
     _vm._l(_vm.messages, function(message) {
-      return _c("li", { staticClass: "left clearfix" }, [
+      return _c("li", { key: message.id, staticClass: "left clearfix" }, [
         _c("div", { staticClass: "chat-body clearfix" }, [
           _c("div", { staticClass: "header" }, [
             _c("strong", { staticClass: "primary-font" }, [
               _vm._v(
                 "\n                    " +
-                  _vm._s(message.user.name) +
+                  _vm._s(message.messenger_id) +
                   "\n                "
               )
             ])
@@ -57204,7 +57204,9 @@ var render = function() {
           _vm._v(" "),
           _c("p", [
             _vm._v(
-              "\n                " + _vm._s(message.message) + "\n            "
+              "\n                " +
+                _vm._s(message.message_text) +
+                "\n            "
             )
           ])
         ])
@@ -57301,8 +57303,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         sendMessage: function sendMessage() {
             this.$emit('messagesent', {
-                user: this.user,
-                message: this.newMessage
+                messenger_id: this.user,
+                message_text: this.newMessage
             });
 
             this.newMessage = '';

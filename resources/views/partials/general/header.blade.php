@@ -1,9 +1,11 @@
 <!--Title-->
-@include('meta')
+@include('partials.general.meta')
+@include('partials.general.analytics')
+
 <title>@yield('title')</title>
 
 <!--Scripts-->
-@include('general/scripts')
+@include('partials.general.scripts')
 @foreach($data['homeherotext'] as $hero)
 <!-- Nav -->
 <section class = "hero is-primary is-{{$hero->hero_size}}" id="has_bg_img_{{$hero->page}}" >

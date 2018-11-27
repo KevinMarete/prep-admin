@@ -9,7 +9,7 @@
                     <chat-messages :messages="messages"></chat-messages>     
                 </div>
                 <div class ="panel-block">
-                    <chat-form v-on:messagesent="addMessage" :user="" ></chat-form>
+                    <chat-form v-on:messagesent="addMessage" :user="'{{$user->id}}'" ></chat-form>
                 </div>
             </div>  
             <chat-messages :messages="messages"></chat-messages>

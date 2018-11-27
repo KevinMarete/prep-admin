@@ -36,6 +36,6 @@ class MessageSent
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('chat');
+        return new PublicChannel('chat');
     }
 }

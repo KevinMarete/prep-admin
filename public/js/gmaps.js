@@ -19,6 +19,9 @@ function initMap() {
     var infoWindow = new google.maps.InfoWindow;
     var county;
 
+    //Set Facility Markers across Map
+    setFacilityMarkers();
+
     //Use Geolocation service to get center
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -62,6 +65,19 @@ function initMap() {
         handleLocationError(false, infoWindow, map.getCenter());
       }
    
+    //Get facility location and details, loop through them and plant markers across map
+    function setFacilityMarkers(){
+      axios.get('api/facilities').then(function(response){
+          $.each(response.data, function(key, value){
+            console.log(value)
+            //var LatLng = new google.maps.LatLng(re)
+          })
+      }).catch(function(error){
+
+      }).then({
+
+      })
+    }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);

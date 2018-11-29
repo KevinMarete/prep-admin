@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Get facilities array [*unautheticated api route]
+Route::get('facilities', 'facilitiesController@getLocationMarkers');
+
+//Get facilties XML
+Route::get('facilitiesXML', 'facilitiesController@getLocationMarkersXML');

@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         }else{
             $page = 'home';
         }
+      
 
         //Get RAST
         $data['rast'] = \App\Riskassessment::all();

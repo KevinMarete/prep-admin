@@ -22,6 +22,10 @@ use App\Mail\ContactUs;
 use SEOMeta;
 use OpenGraph;
 
+//Guzzle
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
+
 class PrepFront extends Controller
 {
    
@@ -37,6 +41,7 @@ class PrepFront extends Controller
         $data['sections'] = Section::all()->sortBy('hierrarchy');
         $data['homenumbers'] = Homenumber::all();
         $data['partners'] = Partner::all();
+        $data['patient_numbers'] = $this->getAPINumbers();
 
         //Get map data
         $map_data = array('main' => array(), 'drilldown' => array(), 'columns' => array());
@@ -110,6 +115,16 @@ class PrepFront extends Controller
            //Redirect
            return redirect('/#contact-form')->with('status', 'Email sent!');
            
+        }
+
+        //Get Numbers
+        public function getAPINumbers(){
+            $client = new Client();
+            $api_url = "http://commodities.nascop.org/API/dashboard/patient?year=2018&month=oct&service=prep";
+            $numbers = $client->get($api_url);
+            $numbers_json = $client->get($api_url)->getBody();
+            return json_decode($numbers_json);
+        
         }
 
 

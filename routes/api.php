@@ -22,3 +22,6 @@ Route::get('facilities', 'facilitiesController@getLocationMarkers');
 
 //Get facilties XML
 Route::get('facilitiesXML', 'facilitiesController@getLocationMarkersXML');
+
+//Get Numbers API
+Route::get('numbers','PrepFront@getAPINumbers');

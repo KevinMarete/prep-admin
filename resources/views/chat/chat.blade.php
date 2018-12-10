@@ -1,7 +1,7 @@
 @include('partials/general/meta')
-@include('styles/chat-styles');
+@include('styles/chat-styles')
 <div class ="columns is-mobile" id="chatapp">
-    <div class = "column is-3 is-offset-9">
+    <div class = "column">
         <div class = "box">
             <div class = "panel"> 
                 <p class ="panel-heading">Chat</p>

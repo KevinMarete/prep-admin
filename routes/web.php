@@ -26,6 +26,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 //Chat Routes
-Route::get('/chat', 'ChatsController@index');
+Route::get('/chat', 'ChatsController@index')->middleware('cors');
 Route::get('messages', 'ChatsController@fetchMessages');
 Route::post('messages', 'ChatsController@sendMessage');

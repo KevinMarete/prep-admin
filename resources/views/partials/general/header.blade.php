@@ -8,7 +8,7 @@
 @include('partials.general.scripts')
 @foreach($data['homeherotext'] as $hero)
 <!-- Nav -->
-<section class = "hero is-primary is-{{$hero->hero_size}}" id="has_bg_img_{{$hero->page}}" >
+<section class = "hero is-primary is-{{$hero->hero_size}} has-carousel" id="has_bg_img_{{$hero->page}}" >
     <div class = "hero-head">
         <nav class="navbar is-transparent">
             <div class = "container">
@@ -31,18 +31,46 @@
         </nav>
     </div>
     <div class ="hero-body">
-        <div class = "container has-text-left">
-          <h1 class="title is-size-1">{{$hero->title}}</h1>
-          <h2 class="subtitle">{{$hero->subtitle}}</h2>
-          @if($data['page'] == 'home' || $data['page'] == ' ')
-          <!--figure class = "image is-64x64">
-                <img src="{{url('/images/prep-logo-cropped.png')}}"  alt="Prep (Kenya)">
+        @if($data['page'] != 'home' && $data['page'] != ' ')
+            <div class = "container has-text-left">
+            <h1 class="title is-size-1">{{$hero->title}}</h1>
+            <h2 class="subtitle">{{$hero->subtitle}}</h2>
+            
+            <!--figure class = "image is-64x64">
+                    <img src="{{url('/images/prep-logo-cropped.png')}}"  alt="Prep (Kenya)">
             </figure-->
-          @endif
-        </div>
+            
+            </div>
+        @endif
+        <!-- Add Hero Carousel for Home here -->
+        @if($data['page'] == 'home' || $data['page'] == ' ')
+            <div id="homecarouselgrad">
+            <div class="hero-carousel carousel-animated carousel-animate-fade" data-autoplay="true">
+                <div class='carousel-container'>
+            @foreach($data['carousel_images'] as $cimage)
+                <div class='carousel-item has-background is-active'>
+                    <img class="is-background carousel-image" src="{{url('storage/'.$cimage)}}" alt="" />
+                </div>    
+            @endforeach
+            </div>
+            <div class="carousel-navigation is-overlay">
+                <div class="carousel-nav-left">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </div>
+                <div class="carousel-nav-right">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </div>
+            </div>
+            </div>
+            </div>
+        @endif
     </div>
+    @include('styles.page-hero-styles')
 </section>
-@include('styles.page-hero-styles')
 @endforeach
 <!--Hamburger Menu Js for Bulma CSS-->
 <script src = "{{url('js/hamburger-menu.js')}}"></script>
+<script>
+    var carousels = bulmaCarousel.attach(); // carousels now contains an array of all Carousel instances
+</script>
+

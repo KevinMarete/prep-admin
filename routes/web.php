@@ -17,6 +17,7 @@ Route::get('/provider', 'PrepFront@provider');
 Route::get('/policymaker', 'PrepFront@policymaker');
 Route::get('/resources', 'PrepFront@resources');
 Route::get('/journeyinkenya', 'PrepFront@journeyinkenya');
+Route::get('/testimonials', 'PrepFront@testimonials');
 Route::get('/riskassessment-tool', 'PrepFront@rast');
 
 Route::post('/sendMail', 'PrepFront@sendMail')->name('email');

@@ -98,6 +98,12 @@ class PrepFront extends Controller
             return view('pages.journeyinkenya');
         }
 
+        //Return Testimonials
+        public function testimonials(){
+            $this->setSEO('testimonials');
+            return view('pages.testimonials');
+        }
+
         //Return Journey in Kenya
         public function rast(){
             return view('pages.riskassessment');

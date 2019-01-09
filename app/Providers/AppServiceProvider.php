@@ -37,6 +37,9 @@ class AppServiceProvider extends ServiceProvider
             $data['section_imgs_'.str_slug($section->title)] = Storage::allFiles('sections/'.$section->title);
         }
 
+        //Get home carousel images
+        $data['carousel_images'] = Storage::allFiles('home-carousel');
+
         //Get resources
         $data['resources_folders'] = Storage::directories('resources');
 

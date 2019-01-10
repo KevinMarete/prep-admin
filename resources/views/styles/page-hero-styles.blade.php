@@ -14,4 +14,9 @@
   @endif
 @endforeach
 
+<style>
+  .carousel-image{
+    filter:brightness(50%);
+  }
+</style>
 

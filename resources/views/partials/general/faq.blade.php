@@ -9,7 +9,11 @@
                         <p><strong>{{$faq->question}}</strong></p>
                         &nbsp;
                         <figure class="image is-4by3">
-                            <img src="{{url('storage/'.array_random($data['images']))}}" alt="">
+                            @if(empty($faq->image))
+                                <img src="{{url('storage/'.array_random($data['images']))}}" alt="">
+                            @else
+                                <img src="{{$faq->image}}" alt="">
+                            @endif
                         </figure>
                         &nbsp;
                         <p>{{$faq->answer}}</p>

@@ -1,4 +1,4 @@
-<div class = "hero-body">
+<div class = "">
 <div class="columns" id="section_has_bg_img{{$section->content}}">
     @php $df=0;@endphp
       @foreach($section->faqs as $faq)

@@ -127,7 +127,7 @@ class PrepFront extends Controller
         public function getAPINumbers(){
 
             //Get date from past month
-            $date = date('Y-M', strtotime('first day of last month'));
+            $date = date('Y-M', strtotime('- 2 months'));
             $dateArray = explode('-', $date);
            
             //Get date sections

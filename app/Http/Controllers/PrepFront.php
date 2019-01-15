@@ -125,8 +125,19 @@ class PrepFront extends Controller
 
         //Get Numbers
         public function getAPINumbers(){
+
+            //Get date from past month
+            $date = date('Y-M', strtotime('first day of last month'));
+            $dateArray = explode('-', $date);
+           
+            //Get date sections
+            $year = $dateArray[0];
+            $month = $dateArray[1];
+            $day = '21';
+
+            //Get numbers
             $client = new Client();
-            $api_url = "http://commodities.nascop.org/API/dashboard/patient?year=2018&month=oct&service=prep";
+            $api_url = "http://commodities.nascop.org/API/dashboard/patient?year=$year&month=$month&day=$day&service=prep";
             $numbers = $client->get($api_url);
             $numbers_json = $client->get($api_url)->getBody();
             return json_decode($numbers_json);

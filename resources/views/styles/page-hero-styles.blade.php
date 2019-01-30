@@ -20,3 +20,10 @@
   }
 </style>
 
+<style>
+.accordion-header{
+  color:#000 !important;
+  background-color:#F5F4E5 !important;
+}
+</style>
+

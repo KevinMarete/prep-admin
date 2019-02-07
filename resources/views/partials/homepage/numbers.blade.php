@@ -8,8 +8,10 @@
                 </div>
             @else
             <div class = "level-item" >
+            @if(!empty($patient_numbers))
                     <p class ="title"><b>{{number_format($patient_numbers[0]->patients)}}</b></p>
-                    <p class ="subtitle">{{$number->title.' ('.$patient_numbers[0]->data_year.')'}}</p>    
+                    <p class ="subtitle">{{$number->title.' ('.$patient_numbers[0]->data_year.')'}}</p>
+            @endif    
             </div>
             @endif
         @endforeach

@@ -137,10 +137,17 @@ class PrepFront extends Controller
 
             //Get numbers
             $client = new Client();
-            $api_url = "http://commodities.nascop.org/API/dashboard/patient?year=$year&month=$month&day=$day&service=prep";
-            $numbers = $client->get($api_url);
-            $numbers_json = $client->get($api_url)->getBody();
-            return json_decode($numbers_json);
+
+            try{
+                $api_url = "http://commodities.nascop.org/API/dashboard/patient?year=$year&month=$month&day=$day&service=prep";
+                $numbers = $client->get($api_url);
+                $numbers_json = $client->get($api_url)->getBody();
+                return json_decode($numbers_json);
+            }
+            catch(GuzzleException $e){
+                return false;
+            }
+
         
         }
 

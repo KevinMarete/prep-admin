@@ -37,10 +37,6 @@ class Handler extends ExceptionHandler
         parent::report($exception);
     }
 
-    protected function renderExceptionWithWhoops(Exception $e)
-    {
-        return $this->renderExceptionWithSymfony($e, config('app.debug'));
-    }
 
     /**
      * Render an exception into an HTTP response.
